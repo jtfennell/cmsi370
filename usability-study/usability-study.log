@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  25 SEP 2014 10:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  25 SEP 2014 11:23
 entering extended mode
 **usability-study
 (c:\users\jeff\cmsi370\usability-study\usability-study.tex
@@ -124,24 +124,21 @@ File: images/chart1.png Graphic file (type png)
 Package pdftex.def Info: images/chart1.png used on input line 30.
 (pdftex.def)             Requested size: 390.0pt x 244.08183pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [2] [3 <c:/users/jeff/cmsi370/usability-study/images/chart1.png (PNG copy)>]
 <images/chart2.png, id=18, 608.2725pt x 431.6125pt>
 File: images/chart2.png Graphic file (type png)
  <use images/chart2.png>
-Package pdftex.def Info: images/chart2.png used on input line 65.
+Package pdftex.def Info: images/chart2.png used on input line 66.
 (pdftex.def)             Requested size: 292.5pt x 207.55362pt.
 
 [4] [5 <c:/users/jeff/cmsi370/usability-study/images/chart2.png (PNG copy)>]
 <images/chart3.png, id=25, 574.145pt x 324.21124pt>
 File: images/chart3.png Graphic file (type png)
  <use images/chart3.png>
-Package pdftex.def Info: images/chart3.png used on input line 78.
+Package pdftex.def Info: images/chart3.png used on input line 79.
 (pdftex.def)             Requested size: 292.5pt x 165.1724pt.
 
-Overfull \hbox (1.13622pt too wide) in paragraph at lines 82--83
+Overfull \hbox (1.13622pt too wide) in paragraph at lines 83--84
 []\OT1/cmr/m/n/12 In ex-am-in-ing the style of in-ter-ac-tion em-ployed by both
  Spo-tify and iTunes,
  []
@@ -149,7 +146,7 @@ Overfull \hbox (1.13622pt too wide) in paragraph at lines 82--83
 <images/chart4.png, id=26, 1371.1225pt x 770.88pt>
 File: images/chart4.png Graphic file (type png)
  <use images/chart4.png>
-Package pdftex.def Info: images/chart4.png used on input line 86.
+Package pdftex.def Info: images/chart4.png used on input line 87.
 (pdftex.def)             Requested size: 390.0pt x 219.26787pt.
 
 [6 <c:/users/jeff/cmsi370/usability-study/images/chart3.png (PNG copy)>]
@@ -157,45 +154,45 @@ Package pdftex.def Info: images/chart4.png used on input line 86.
 <images/chart5.png, id=34, 1371.1225pt x 770.88pt>
 File: images/chart5.png Graphic file (type png)
  <use images/chart5.png>
-Package pdftex.def Info: images/chart5.png used on input line 98.
+Package pdftex.def Info: images/chart5.png used on input line 99.
 (pdftex.def)             Requested size: 390.0pt x 219.26787pt.
 
 [8 <c:/users/jeff/cmsi370/usability-study/images/chart5.png (PNG copy)>]
 <images/chart8.png, id=38, 1371.1225pt x 770.88pt>
 File: images/chart8.png Graphic file (type png)
  <use images/chart8.png>
-Package pdftex.def Info: images/chart8.png used on input line 108.
+Package pdftex.def Info: images/chart8.png used on input line 109.
 (pdftex.def)             Requested size: 292.5pt x 164.45384pt.
 
 <images/chart7.png, id=39, 1371.1225pt x 770.88pt>
 File: images/chart7.png Graphic file (type png)
  <use images/chart7.png>
-Package pdftex.def Info: images/chart7.png used on input line 114.
+Package pdftex.def Info: images/chart7.png used on input line 115.
 (pdftex.def)             Requested size: 292.5pt x 164.45384pt.
 
 [9 <c:/users/jeff/cmsi370/usability-study/images/chart8.png (PNG copy)>]
 <images/chart9.png, id=43, 1371.1225pt x 708.6475pt>
 File: images/chart9.png Graphic file (type png)
  <use images/chart9.png>
-Package pdftex.def Info: images/chart9.png used on input line 120.
+Package pdftex.def Info: images/chart9.png used on input line 121.
 (pdftex.def)             Requested size: 292.5pt x 151.17761pt.
 
 [10 <c:/users/jeff/cmsi370/usability-study/images/chart7.png (PNG copy)> <c:/us
 ers/jeff/cmsi370/usability-study/images/chart9.png (PNG copy)>] [11]
 (c:\users\jeff\cmsi370\usability-study\usability-study.aux) ) 
 Here is how much of TeX's memory you used:
- 1255 strings out of 493921
- 16811 string characters out of 3147285
+ 1257 strings out of 493921
+ 16831 string characters out of 3147285
  68716 words of memory out of 3000000
- 4575 multiletter control sequences out of 15000+200000
+ 4577 multiletter control sequences out of 15000+200000
  9107 words of font info for 32 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,7n,19p,1264b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,7n,19p,1326b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmr17.pfb>
-Output written on usability-study.pdf (12 pages, 1539340 bytes).
+Output written on usability-study.pdf (12 pages, 1539442 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
