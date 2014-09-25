@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  23 SEP 2014 22:39
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  24 SEP 2014 20:51
 entering extended mode
 **usability-study
 (c:\users\jeff\cmsi370\usability-study\usability-study.tex
@@ -63,33 +63,41 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count89
+\float@exts=\toks15
+\float@box=\box26
+\@float@everytoks=\toks16
+\@floatcapt=\box27
+)
 (c:\users\jeff\cmsi370\usability-study\usability-study.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
+\scratchcounter=\count90
 \scratchdimen=\dimen105
-\scratchbox=\box26
-\nofMPsegments=\count90
-\nofMParguments=\count91
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count92
+\scratchbox=\box28
+\nofMPsegments=\count91
+\nofMParguments=\count92
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count93
 \MPscratchDim=\dimen106
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
-\everyMPtoPDFconversion=\toks16
+\MPnumerator=\count94
+\makeMPintoPDFobject=\count95
+\everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 11.
@@ -97,30 +105,70 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 11.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1]
-<images/chart1.png, id=11, 530.98375pt x 286.06876pt>
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<images/chart1.png, id=7, 552.0625pt x 349.305pt>
 File: images/chart1.png Graphic file (type png)
  <use images/chart1.png>
-Package pdftex.def Info: images/chart1.png used on input line 29.
-(pdftex.def)             Requested size: 390.0pt x 210.11613pt.
+Package pdftex.def Info: images/chart1.png used on input line 24.
+(pdftex.def)             Requested size: 390.0pt x 246.77173pt.
 
-[2 <c:/users/jeff/cmsi370/usability-study/images/chart1.png (PNG copy)>]
-(c:\users\jeff\cmsi370\usability-study\usability-study.aux) ) 
+[1] [2 <c:/users/jeff/cmsi370/usability-study/images/chart1.png (PNG copy)>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 39.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 39.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 39.
+
+<images/chart2.png, id=15, 608.2725pt x 431.6125pt>
+File: images/chart2.png Graphic file (type png)
+ <use images/chart2.png>
+Package pdftex.def Info: images/chart2.png used on input line 56.
+(pdftex.def)             Requested size: 292.5pt x 207.55362pt.
+
+[3] [4 <c:/users/jeff/cmsi370/usability-study/images/chart2.png (PNG copy)>]
+<images/chart3.png, id=22, 574.145pt x 324.21124pt>
+File: images/chart3.png Graphic file (type png)
+ <use images/chart3.png>
+Package pdftex.def Info: images/chart3.png used on input line 69.
+(pdftex.def)             Requested size: 292.5pt x 165.1724pt.
+
+Overfull \hbox (1.13622pt too wide) in paragraph at lines 73--74
+[]\OT1/cmr/m/n/12 In ex-am-in-ing the style of in-ter-ac-tion em-ployed by both
+ Spo-tify and iTunes,
+ []
+
+<images/chart4.png, id=23, 1371.1225pt x 770.88pt>
+File: images/chart4.png Graphic file (type png)
+ <use images/chart4.png>
+Package pdftex.def Info: images/chart4.png used on input line 77.
+(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+
+[5 <c:/users/jeff/cmsi370/usability-study/images/chart3.png (PNG copy)>]
+[6 <c:/users/jeff/cmsi370/usability-study/images/chart4.png (PNG copy)>]
+<images/chart5.png, id=31, 1371.1225pt x 770.88pt>
+File: images/chart5.png Graphic file (type png)
+ <use images/chart5.png>
+Package pdftex.def Info: images/chart5.png used on input line 89.
+(pdftex.def)             Requested size: 390.0pt x 219.26787pt.
+
+[7 <c:/users/jeff/cmsi370/usability-study/images/chart5.png (PNG copy)>]
+[8] (c:\users\jeff\cmsi370\usability-study\usability-study.aux) ) 
 Here is how much of TeX's memory you used:
- 1137 strings out of 493921
- 15010 string characters out of 3147285
- 66345 words of memory out of 3000000
- 4477 multiletter control sequences out of 15000+200000
- 5756 words of font info for 21 fonts, out of 3000000 for 9000
+ 1234 strings out of 493921
+ 16350 string characters out of 3147285
+ 67716 words of memory out of 3000000
+ 4560 multiletter control sequences out of 15000+200000
+ 8194 words of font info for 29 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,6n,19p,1074b,179s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmr17.pfb>
-Output written on usability-study.pdf (3 pages, 55826 bytes).
+ 27i,7n,19p,1074b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr17.pfb>
+Output written on usability-study.pdf (9 pages, 528048 bytes).
 PDF statistics:
- 25 PDF objects out of 1000 (max. 8388607)
+ 49 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
