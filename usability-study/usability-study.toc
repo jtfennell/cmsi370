@@ -1,6 +1,6 @@
-\contentsline {section}{\numberline {0.1}Intro}{1}
-\contentsline {section}{\numberline {0.2}Metrics}{2}
-\contentsline {subsection}{\numberline {0.2.1}Efficiency}{2}
-\contentsline {subsection}{\numberline {0.2.2}Errors}{3}
-\contentsline {subsection}{\numberline {0.2.3}Satisfaction}{4}
-\contentsline {section}{\numberline {0.3}Heuristics}{5}
+\contentsline {section}{\numberline {1}Intro}{1}
+\contentsline {section}{\numberline {2}Metrics}{2}
+\contentsline {subsection}{\numberline {2.1}Efficiency}{2}
+\contentsline {subsection}{\numberline {2.2}Errors}{3}
+\contentsline {subsection}{\numberline {2.3}Satisfaction}{4}
+\contentsline {section}{\numberline {3}Heuristics}{5}

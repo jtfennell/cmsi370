@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  25 SEP 2014 12:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.23)  25 SEP 2014 15:51
 entering extended mode
 **usability-study
 (c:\users\jeff\cmsi370\usability-study\usability-study.tex
@@ -13,20 +13,19 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
-Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@chapter=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
@@ -58,143 +57,140 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count88
+\Gread@gobject=\count87
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count89
+\c@float@type=\count88
 \float@exts=\toks15
 \float@box=\box26
 \@float@everytoks=\toks16
 \@floatcapt=\box27
 )
 (c:\users\jeff\cmsi370\usability-study\usability-study.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count90
+\scratchcounter=\count89
 \scratchdimen=\dimen105
 \scratchbox=\box28
-\nofMPsegments=\count91
-\nofMParguments=\count92
+\nofMPsegments=\count90
+\nofMParguments=\count91
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count93
+\MPscratchCnt=\count92
 \MPscratchDim=\dimen106
-\MPnumerator=\count94
-\makeMPintoPDFobject=\count95
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
 \everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 12.
+(Font)              <14.4> on input line 14.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 12.
- [1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(c:\users\jeff\cmsi370\usability-study\usability-study.toc
+(Font)              <7> on input line 14.
+ (c:\users\jeff\cmsi370\usability-study\usability-study.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 1.
+(Font)              <12> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 1.
+(Font)              <8> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
+(Font)              <6> on input line 3.
 )
 \tf@toc=\write3
  [1
 
-]
-<images/chart1.png, id=11, 598.235pt x 374.39874pt>
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<images/chart1.png, id=8, 598.235pt x 374.39874pt>
 File: images/chart1.png Graphic file (type png)
  <use images/chart1.png>
-Package pdftex.def Info: images/chart1.png used on input line 75.
+Package pdftex.def Info: images/chart1.png used on input line 77.
 (pdftex.def)             Requested size: 390.0pt x 244.08183pt.
 
 [2] [3 <c:/users/jeff/cmsi370/usability-study/images/chart1.png (PNG copy)>]
-<images/chart2.png, id=18, 608.2725pt x 431.6125pt>
+<images/chart2.png, id=15, 608.2725pt x 431.6125pt>
 File: images/chart2.png Graphic file (type png)
  <use images/chart2.png>
-Package pdftex.def Info: images/chart2.png used on input line 151.
+Package pdftex.def Info: images/chart2.png used on input line 153.
 (pdftex.def)             Requested size: 292.5pt x 207.55362pt.
 
 [4] [5 <c:/users/jeff/cmsi370/usability-study/images/chart2.png (PNG copy)>]
-<images/chart3.png, id=25, 574.145pt x 324.21124pt>
+<images/chart3.png, id=22, 574.145pt x 324.21124pt>
 File: images/chart3.png Graphic file (type png)
  <use images/chart3.png>
-Package pdftex.def Info: images/chart3.png used on input line 188.
+Package pdftex.def Info: images/chart3.png used on input line 190.
 (pdftex.def)             Requested size: 292.5pt x 165.1724pt.
 
-Overfull \hbox (1.13622pt too wide) in paragraph at lines 194--199
+Overfull \hbox (1.13622pt too wide) in paragraph at lines 196--201
 []\OT1/cmr/m/n/12 In ex-am-in-ing the style of in-ter-ac-tion em-ployed by both
  Spo-tify and iTunes,
  []
 
-<images/chart4.png, id=26, 1371.1225pt x 770.88pt>
+<images/chart4.png, id=23, 1371.1225pt x 770.88pt>
 File: images/chart4.png Graphic file (type png)
  <use images/chart4.png>
-Package pdftex.def Info: images/chart4.png used on input line 202.
+Package pdftex.def Info: images/chart4.png used on input line 204.
 (pdftex.def)             Requested size: 390.0pt x 219.26787pt.
 
 [6 <c:/users/jeff/cmsi370/usability-study/images/chart3.png (PNG copy)>]
 [7 <c:/users/jeff/cmsi370/usability-study/images/chart4.png (PNG copy)>]
-<images/chart5.png, id=34, 1371.1225pt x 770.88pt>
+<images/chart5.png, id=31, 1371.1225pt x 770.88pt>
 File: images/chart5.png Graphic file (type png)
  <use images/chart5.png>
-Package pdftex.def Info: images/chart5.png used on input line 242.
+Package pdftex.def Info: images/chart5.png used on input line 244.
 (pdftex.def)             Requested size: 390.0pt x 219.26787pt.
 
 [8 <c:/users/jeff/cmsi370/usability-study/images/chart5.png (PNG copy)>]
-<images/chart8.png, id=38, 1371.1225pt x 770.88pt>
+<images/chart8.png, id=35, 1371.1225pt x 770.88pt>
 File: images/chart8.png Graphic file (type png)
  <use images/chart8.png>
-Package pdftex.def Info: images/chart8.png used on input line 271.
+Package pdftex.def Info: images/chart8.png used on input line 273.
 (pdftex.def)             Requested size: 292.5pt x 164.45384pt.
 
-<images/chart7.png, id=39, 1371.1225pt x 770.88pt>
+<images/chart7.png, id=36, 1371.1225pt x 770.88pt>
 File: images/chart7.png Graphic file (type png)
  <use images/chart7.png>
-Package pdftex.def Info: images/chart7.png used on input line 281.
+Package pdftex.def Info: images/chart7.png used on input line 283.
 (pdftex.def)             Requested size: 292.5pt x 164.45384pt.
 
 [9 <c:/users/jeff/cmsi370/usability-study/images/chart8.png (PNG copy)>]
-<images/chart9.png, id=43, 1371.1225pt x 708.6475pt>
+<images/chart9.png, id=40, 1371.1225pt x 708.6475pt>
 File: images/chart9.png Graphic file (type png)
  <use images/chart9.png>
-Package pdftex.def Info: images/chart9.png used on input line 289.
+Package pdftex.def Info: images/chart9.png used on input line 291.
 (pdftex.def)             Requested size: 292.5pt x 151.17761pt.
 
 [10 <c:/users/jeff/cmsi370/usability-study/images/chart7.png (PNG copy)> <c:/us
 ers/jeff/cmsi370/usability-study/images/chart9.png (PNG copy)>] [11]
 (c:\users\jeff\cmsi370\usability-study\usability-study.aux) ) 
 Here is how much of TeX's memory you used:
- 1257 strings out of 493921
- 16831 string characters out of 3147285
- 68715 words of memory out of 3000000
- 4577 multiletter control sequences out of 15000+200000
- 9107 words of font info for 32 fonts, out of 3000000 for 9000
+ 1239 strings out of 493921
+ 16629 string characters out of 3147285
+ 68368 words of memory out of 3000000
+ 4559 multiletter control sequences out of 15000+200000
+ 8808 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,7n,19p,360b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmr17.pfb>
-Output written on usability-study.pdf (12 pages, 1539469 bytes).
+Output written on usability-study.pdf (11 pages, 1539116 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
