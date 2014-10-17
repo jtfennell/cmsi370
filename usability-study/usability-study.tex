@@ -15,7 +15,7 @@
 
 \tableofcontents
 
-\section{Intro}
+\section{Introduction}
 
 The purpose of this study was to analyze two of the top music 
 applications in existence to determine which has been more 
@@ -24,11 +24,11 @@ were performed on iTunes and Spotify desktop applications.
 
 The first task the test subjects performed was started on the main 
 music library of the application. Users were asked to create a new 
-playlist with the title "Hello World".  During the second task, 
+playlist with the title ``Hello World.''  During the second task, 
 users again started on the music library of the application. They 
 were then asked to make use of the automated radio, a feature that 
 is present in both platforms. Users were asked to start the radio 
-and create a station adapted to the artist "Tiesto". The final 
+and create a station adapted to the artist ``Tiesto.'' The final 
 task was to navigate to a pre-created playlist on the application, 
 and set the playlist to loop indefinitely. For each of the tasks, 
 the amount of time it took each user to complete the task was 
@@ -64,7 +64,11 @@ the averages for Spotify were lower than those of iTunes. Though
 we did not officially evaluate learnability of a metric, this 
 speaks to the learnability of Spotify, as users with little domain 
 knowledge of Spotify were able to compete the tasks more quickly 
-than those with domain knowledge of iTunes. The highest time 
+than those with domain knowledge of iTunes.
+% JD: You mean *interface* knowledge---domain knowledge is the
+%     real-world lens, such as simply the concept of a list of
+%     songs, or a radio station, or playing music repeatedly.
+The highest time 
 overall was produced by an iTunes user who rated their domain 
 knowledge of iTunes as a 9 out of 10. It took this user 26 seconds 
 to create a playlist, a full 7 seconds longer than the slowest 
@@ -97,7 +101,7 @@ taking an average of 20.06 seconds.
 
 \subsection{Errors}
 
-In performing the first task, Itunes actually did slightly better, with users making only 3 
+In performing the first task, iTunes actually did slightly better, with users making only 3 
 errors during the first task. Spotify testers collectively made 4 
 errors in the course of the first test. In the second test, iTunes 
 errors made a total of 6 errors, while Spotify users only made 4. 
@@ -110,10 +114,10 @@ In the second task, one of the errors included attempting to find
 the iTunes radio function through the iTunes store. Another user 
 attempted to go through the file menu, and then gave up doing it 
 that way, subsequently going through the playlist tab on the 
-navigation bar. Another user clicked on the "wishlist" button, 
+navigation bar. Another user clicked on the ``wishlist'' button, 
 thinking it would lead them to the radio.
 
-In the third task,  errors generally were related to users not 
+In the third task, errors generally were related to users not 
 being able to determine the functionality of buttons. Users in 
 both platforms had a difficult time discerning between the shuffle 
 and repeat buttons. Once users figured out which button was the 
@@ -123,7 +127,7 @@ repeats the current song playing indefinitely.
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lllll}
+\begin{tabular}{lrrll}
 \hline
             & iTunes & Spotify &  &  \\ \hline
 First Task  & 3      & 4       &  &  \\
@@ -146,7 +150,6 @@ three tests. The results of the three tests were very close,
 however, the user-reported overall level of satisfaction proved to 
 be the tiebreaker, with Spotify again coming out as the winner.
 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.75\textwidth]{chart2.png}
@@ -163,15 +166,16 @@ of about .6 points separating the two. Regardless of this small
 victory, users still rated the overall experience of Spotify as 
 more pleasant than that of iTunes, with a margin of 1.25 points. 
 Upon looking at the results, it seems odd that Spotify scored so 
-much higher than iTunes overall. Even though the average 
+much higher than iTunes overall, even though the average 
 satisfaction for the 3 tests was virtually identical. Possible 
 reasons for this difference in rating will be examined in the 
-Heuristics section.
+Heuristics section (Section~\ref{heuristics}).
 
 
 \section{Heuristics}
+\label{heuristics}
 
-A very strong possible explanation why Spotify testers had higher 
+A very strong possible explanation of why Spotify testers had higher 
 levels of satisfaction with Spotify as a whole lies in the average 
 efficiency for each system. As shown in Figure 3, iTunes testers 
 took nearly twice as long on average to perform any one task. 
@@ -197,6 +201,8 @@ iTunes, some of the reasons that Spotify perform better become
 apparent. One of the more critical components of the Spotify UI to 
 note is the use of a vertical, scrollable, navigation column on 
 the left-hand side of the screen (shown in figure 4). 
+% JD: What principle does this exemplify?  Or does it follow
+%     a published guideline?
 
 \begin{figure}[H]
 	\centering
@@ -215,14 +221,19 @@ window allows the user to navigate to it more quickly. They do not
 have to worry about overshooting the left hand side of the 
 navigation bar, as the edge of the screen will stop them. This is 
 a direct application of the hotspot concept in Fitts' law.
+% JD: This would only hold true when the window is fullscreen,
+%     wouldn't it?
 
  All three of the tasks we asked users to carry out actually had 
 shortcut buttons in Spotify navigation column. In our first 
-test, many of the users utilized the "New Playlist" shortcut in 
+test, many of the users utilized the ``New Playlist'' shortcut in 
 the navigation column to create and name a playlist extremely 
 quickly. This method creates a playlist in one click, immediately 
 allowing the user to type in the name of the new playlist. Even if 
-the user uses the file>create playlist> path, it takes only 2 
+the user uses the file \(>\) create playlist \(>\) path,
+% JD: LaTeX considers ">" to be a math symbol, so they need to be
+%     delimited by the math notation indicators \(   \).
+it takes only 2
 clicks to create a playlist. Ease of navigation through this menu 
 bar was also possible in our second task. There is a link in the 
 navigation bar to go straight to the radio function. From there, 
@@ -237,6 +248,8 @@ size of the navigation bar can allow the user to very easily
 overshoot the navbar when they attempt to click a button. It does 
 not have the same hotspot advantage of the navigation column in 
 Spotify.
+% JD: And in this case, it makes no difference whether the window
+%     is maximized or not.
 
 \begin{figure}[H]
 	\centering
@@ -260,17 +273,24 @@ because of the way its buttons and navigation items are organized.
 The buttons in Spotify are larger than those of iTunes. Many of 
 iTunes' buttons do not have words on them, but rather are glyphs 
 representing the tasks, some of which can be confused as one of 
-several functions. In addition to just containing symbols, many of 
+several functions.
+% JD: Yes, although this confusion is not Fitts's Law.  Fitts is
+%     exclusively a matter of size and distance.  Which poses the
+%     question---if the iTunes buttons were merely bigger, with a
+%     bigger symbol, would it have performed better?
+In addition to just containing symbols, many of 
 the Spotify buttons also contain words. This serves two purposes. 
 Not only does it give the user a precise description of what 
 function the button serves, but also, increases the width of the 
-buttons, making them easier to navigate to. Figures 6,7, and 8 
+buttons, making them easier to navigate to. Figures 6,7, and 8
+% JD: Use \label and \ref to automatically insert the correct
+%     figure numbers---look 'em up.
 illustrate these points.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.75\textwidth]{chart8.png}
-	\caption{Placement of the "New Playlist" button in the 
+	\caption{Placement of the ``New Playlist'' button in the 
 navigation column makes it more accessible and easier to click 
 than in iTunes (see figure 7) Additionally, it takes only 1 click 
 to perform the same task that takes 2 clicks in iTunes (see figure 
@@ -288,7 +308,7 @@ into the corner of screen. Observe as well that iTunes took an additional click 
 
 
 
- In essence, the buttons in Spotify are more "in your face". This 
+ In essence, the buttons in Spotify are more ``in your face.'' This 
 is an explanation for why there were fewer errors overall in 
 Spotify than in iTunes. There's another feature of Spotify that 
 several testers accidentally exploited to increase efficiency. 
@@ -305,16 +325,18 @@ indicating to the user that the module is loading. This does not
 happen in iTunes. When you attempt to navigate from the main music 
 library to the radio, for instance, the app appears to be stagnant 
 until the radio module has loaded. This is actually in defiance of 
-apple's design guidelines  for desktop applications. In the design 
+apple's design guidelines for desktop applications. In the design 
 guidelines, apple encourages the developer to give feedback about the state of the system as 
 soon as possible after user interaction. This also defies Tognazzini's first principles 
 for interaction design, which is to provide the user feedback with 
 some kind of spinner if the wait time is less than or equal to 2 
 seconds.
+% JD: Nice find.
 
 Another explanation of why iTunes is a more usable system involve 
 one of Tognazzini's first principles, the concept of Visible 
-Navigation. Tognazzini's principle is to create a UI that requires 
+Navigation. % JD: Wait---iTunes or Spotify?
+Tognazzini's principle is to create a UI that requires 
 as simple of a mental map as possible. The goal is to make the 
 user effectively feel that they are staying in one place, with the 
 UI doing the work of bringing the content to the user. Spotify 
@@ -334,5 +356,7 @@ remember much more complex mental maps of the UI layout. All of
 these differences in design approach point out Spotify as the more 
 user-friendly system.
 
+% JD: You called out a nice set of principles here...would have been
+%     good to cite them.
 
 \end{document}
