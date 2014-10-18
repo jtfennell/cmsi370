@@ -1,5 +1,6 @@
 h1 {
 	font-size: 55px;
+	color:white;
 }
 .navbar-brand{
 	font-family: 'Arvo', serif;
@@ -11,6 +12,7 @@ h1 {
 }
 .btn-large{
 	width: 200px;
+	color:black;
 }
 body{
 	background-color:#333333
