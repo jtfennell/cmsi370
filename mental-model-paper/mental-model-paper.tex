@@ -26,21 +26,42 @@ Though there are a multitide of classes of wearable devices currently in existan
 
 \section{Background / Prior literature}
 
-The wearable computing devices that this paper is interested in include wearable watches and glasses, and other accessories that have been converted into wearable computing devices. The following are studies and reports that centered around the common themes of design challenges with wearable devices.
+The wearable computing devices that this paper is interested in include Google Glass and Samsung Wear, and other accessories that have been converted into wearable computing devices. The following are studies and reports that centered around the common themes of design challenges of other wearable devices.
 
 Witt et. al (2006) investigated the challenges of developing a hands-free interface for a computing system \cite{witt}. The authors developed a set of design challenges for hands-free interfaces, and with those constraints in mind, designed a wearable electronic glove that allows a user to control aircraft maintenance software. The paper identifies that small hardware, ability to perform hands-free operation, and the capability to use such an interface with minimal focus, as some of the constraints to designing a hands-free wearable device.
 
-Zhang, et al explored different alternative paradigms of interaction with the Google Glass wearable devices. The authors explore some of the constraints of the mobile human body in designing a user-interface for a wearable device. Additionally, they explored ways in which existing technology in Google glass wearbles, can be improved to further support seamless user-interaction. 
+Zhang, et al (2014) explored alternative paradigms of interaction with the Google Glass wearable devices. The authors explore some of the constraints of the mobile human body in designing a user-interface for a wearable device. Additionally, they explored ways in which existing technology in Google glass wearbles, can be improved to further support seamless user-interaction. 
 
-Todi, et al (2014) investigated incorporating wearables into jackets \cite{todi}. The authors attempted to create a user-interface that was seamlessly integrated with already-present clothing, eliminating or reducing the need for the user to focus their attention on a cell phone to interact with it. Ultimately the objective was to develop a wearble interface that would permit secrecy and security in the use of electronics, and reduce the saliency of such electronics in social settings.  The means to acheive this included embedding the wearable devices within clothing and employing the use of distinct, tangible buttons with unique functionality.
+Todi, et al (2014) investigated incorporating wearables into jackets \cite{todi}. The authors attempted to create a user-interface that was seamlessly integrated with clothing, eliminating or reducing the need for the user to focus their attention on a cell phone to interact with it. Ultimately the objective was to develop a wearble interface that would permit secrecy and security in the use of electronics, and reduce the saliency of such electronics in social settings.  The means to acheive this included embedding the wearable devices within jackets and employing the use of distinct, tangible buttons with various functionalities.
 
+\section{Methods} 
+What seems to be the most important/relevant information? Why is what you have chosen the most relevant? What are the prevailing set of views? (discussing all of this in the next section in depth) 
 
-\section{Methods}
+The following are a set of some of the commonly identified design principles in wearable computing devices.
+
+\begin{enumerate}
+\item{Minimize errors by making large buttons}
+\item Deliver minimal but precisely relevant information
+\item{Make interactions as quick as possible}
+\end{enumerate}
+
+\subsection{Minimize errors}
+Wearable devices are by nature, smaller than tradtional computing devices, in order to inconspicously blend in with the wearer. As Witt et al point out, this leads to hardware designers creating a system that uses the least amount of hardware possible \cite{witt}. Because of smaller hardware specifications, the size of display devices for wearables are naturally limited. This can be observed in the screen sizes of the Google glass and Samsung Wear. The Google Glass display area is the equivalent of a ``25 inch high definition screen from eight feet away'' \cite{goog2}.
+
+Though the user is limited with smaller display sizes on Google Wear platforms, the design documents still encourages developers to integrate Fitts' law into their design patterns. The formal design principles encourage developers to ``design for big gestures'', rather than forcing the user to try and use small interface components \cite{andr}. The concept is to make user interface components as big as possible so the user does not have to worry about being precise with their gestures. This naturally yields wider buttons, which according to Fitts' law, are easier to interact with, and minimize errors. This allows users to make imprecise swipes, and focus more on completing their task, than on the precision of the gestures needed to complete their tasks.
+
+Wearable devices are designed to be integrated seamlesly into the user's life, and not serve as a distraction. Because of this, design documents for both Google Glass and Android Wear encourage designers to design software that allows the user to complete any given task quickly. Google Wear states that if any task on a Wear device takes the user longer than 5 seconds to perform, the developer should reconsider the implementation of the task \cite{andr}. 
 
 \section{Discussion}
+bring in your own thoughts. 
+
+what do you think influences the topic the most?
+
+do you agree or disagree with the literature?
+
+additional points(talk about potential for fatigue, more screens = more complex mental map user must build, much harder to use fittz's law in designing an interface because of limited screen size)
 
 \section{Conclusion}
-
 
 \bibliographystyle{plain}
 \bibliography{mental-model}
