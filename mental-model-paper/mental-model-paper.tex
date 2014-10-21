@@ -10,7 +10,7 @@ Abstract not written yet.
 
 \end{abstract}
 
-\title{Wearables and Mental Models}
+\title{Wearables \\ \vspace{2 mm} {\large Usability and Mental Models}}
 \author{Jeff Fennell}
 \date{October 2014}
 \maketitle
@@ -34,9 +34,9 @@ Zhang, et al (2014) explored alternative paradigms of interaction with the Googl
 
 Todi, et al (2014) investigated incorporating wearables into jackets \cite{todi}. The authors attempted to create a user-interface that was seamlessly integrated with clothing, eliminating or reducing the need for the user to focus their attention on a cell phone to interact with it. Ultimately the objective was to develop a wearble interface that would permit secrecy and security in the use of electronics, and reduce the saliency of such electronics in social settings.  The means to acheive this included embedding the wearable devices within jackets and employing the use of distinct, tangible buttons with various functionalities.
 
-\section{Methods / Design Principles} 
+\section{Methods / Software Design Guidelines} 
 
-In order to determine the specific usability challenges, it helps to first examine the design guidelines of wearable software. The following are some of the guidelines for designing interfaces on Google Glass and Android Wear:
+In order to determine the specific usability challenges of wearables, it helps to first examine spftware design guidelines for wearables. The following are some of the guidelines for designing interfaces on Google Glass and Android Wear:
 
 \begin{enumerate}
 \item{Minimize errors with large buttons}
@@ -46,7 +46,7 @@ In order to determine the specific usability challenges, it helps to first exami
 \end{enumerate}
 
 \subsection{Minimize errors with large buttons}
-Wearable devices are by nature, smaller than tradtional computing devices, in order to inconspicously blend in with the wearer. As Witt et al point out, this leads to hardware designers creating a system that uses the least amount of hardware possible \cite{witt}. Because of smaller hardware specifications, the size of display devices for wearables are naturally limited. This can be observed in the screen sizes of the Google glass and Samsung Wear. The Google Glass display area is the equivalent of a ``25 inch high definition screen from eight feet away'' \cite{goog2}.
+Wearable devices are by nature, smaller than tradtional computing devices, in order to inconspicously blend in with the wearer. As Witt et al point out, this leads to hardware designers creating a system that uses the least amount of hardware possible \cite{witt}. Because of smaller hardware specifications, the size of display devices for wearables are naturally limited. This can be observed in the screen sizes of the Google Glass and Samsung Wear. The Google Glass display area is the equivalent of a ``25 inch high definition screen from eight feet away'' \cite{goog2}.
 
 Though the user is limited with smaller display sizes on Android Wear platforms, the design documents still indirectly encourages developers to integrate Fitts' law into their design patterns. The formal design principles encourage developers to ``design for big gestures'' \cite{andr}. Rather than forcing the user to try and use small interface components, the concept is to make user interface components as big as possible so the user does not have to worry about being precise with their gestures. This is especially important because watches can potentially be used when active. These bigger buttons that are encouraged by the design documents naturally are wider buttons, which according to Fitts' law, are easier to interact with, and minimize errors. This allows users to focus more on completing tasks, than focusing on the precision of the gestures needed to complete the tasks.
 
@@ -65,12 +65,21 @@ In order to prevent the user from having to interact with the device to retrieve
 
 Both platforms also discuss the importance of moderation in delivering notifications, and making sure they are delivered at the right time. Because of the proximity to the user's body, vibration or audible notifications are much more salient than those of conventional devices. They both address how satisfaction can be lowered if an application delivers too many notifications, or delivers them at inconvenient times \cite{goog} \cite{andr}.
 
-\section{Discussion}
-After Reviewing the documentation for the two devices, it has become apparent that wearable computing devices and their software are subject to a mostly-different set of design constraints than software on traditional computing devices. as well as the other external sources, I propose that  
+\section{Discussion-Usability Principles and Mental Models}
+After Reviewing the design guidelines for the two devices as well as the additinal sources, it has become apparent that wearable computing devices and their software are subject to a mostly-different set of design constraints than traditional computing devices. I  propose, based on the device guidelines, that the designers prioritize efficiency as the most important usability metric in their devices. In the interest of making the devices as efficient as possible, and ultimately, as usable as possible, I propose that the main usability issues of the devices that must be accomodated for revolve around 3 inherent characteristics of the devices.
 
--Based on the information presented above, I believe the greatest challenges to the usability of wearable are their size and the fact that humans are mobile creatures.
+\begin{enumerate}
+\item{Smaller size of display hardware}
+\item{Mobility of users while wearing the devices}
+\item{Proximity of devices to the body}
+\end{enumerate}
 
--efficiency is most important usability metric for both of the devices
+\subsection{Smaller hardware}
+The size of the display devices integrated in wearables severely limits their usability. Because wearables' displays are merely a fraction those on conventional computing devices, they are not optimized for the same type of full-fledged applications found on conventional computing devices. In order to physically display the same amount of information as in such an application, a wearable would have to utilize multitudes of navigation windows, in the form of complex navigation structures. Usability of such software would be hindered by the user having to build and memorize complex mental maps to navigate through the screens.
+
+Additionally, in traditional computing devices, larger screen sizes allow software designers to transfer complex, life-like representations of mental models to the user through the use of content and detail. Because the screen size of wearables are a fraction of the size, and the guidelines emphasize efficiency, the amount of content and detail you can and should fit onto the display device is severaly restricted. The Wear and Glass design guidelines' emphasis on delivering only the necessary content, and advising against using small details, instead presenting the user with the big picture, consequently hinder the transmission of complex mental-models to the user.
+
+\textbf{Fitts' law} plays a greater role in the usability of wearables. The buttons are naturally closer together, because of the smaller screen sizes. The Android Wear design guidelines acknowledgement that larger buttons are better for interfaces
 
 -principles that gain importance:
 	-fitt's law
@@ -82,10 +91,6 @@ After Reviewing the documentation for the two devices, it has become apparent th
 -principles that lose importance
 	-hotspot aspect of fitts' law (lack of input pointer device)
 	-feedback(since usually a state change is indicatd by entire screen changing, and tasks are meant to take less than 5 seconds, there is little need to provide feedback )
-
-do you agree or disagree with the literature?
-
-additional points(talk about potential for fatigue, more screens = more complex mental map user must build, much harder to use fittz's law in designing an interface because of limited screen size)
 
 \section{Conclusion}
 
