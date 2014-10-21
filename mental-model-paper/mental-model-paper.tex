@@ -18,15 +18,15 @@ Abstract not written yet.
 \tableofcontents
 
 \section{Introduction}
-Wearable devices, also known as wearables or wearable technology, are any form of technology that has been "incorporated into items of clothing and accessories which can comfortably be worn on the body" \cite{wd}. They can take on a variety of forms, including watches, bracelets, glasses, shirts, hats, and more. Medical devices that are meant to be a permanent fixture on the body are also considered wearable devices.
+Wearable devices, also known as wearables or wearable technology, are any form of technology that has been ``incorporated into items of clothing and accessories which can comfortably be worn on the body'' \cite{wd}. Additionally, wearables are capable of delivering information based on ``[sensing] the user's current context'', taking into account location, time, and other factors\cite{star}. They can take on a variety of forms, including watches, bracelets, glasses, shirts, hats, and more. Medical devices that are meant to be a permanent fixture on the body are also considered wearable devices.
 
 During the past few years, the demand for wearable devices has gone up considerably, and continues to do so. In 2014, the projected value of the market for wearables in the U.S. was nearly 5.2 billion dollars. That market value is expected to more than double by the year 2018, to around 12.7 billion dollars. \cite{wmv}. Due to the increasingly salient presence of wearable devices in our society, improving the methods we use to interact with these devices will become considerably more important. Interaction with wearables is distinctly different than that of typical electronic devices.  Because of the smaller composition of the devices, their nature as extensions of primarily mobile human bodies, and a variety of other characteristics, they present unique challenges to typical paradigms of user-interaction that are worth exploring.
 
-Though there are a multitide of classes of wearable devices currently in existance, for the the purposes of the rest of this paper, in the interest of studying interaction with the technology, wearable devices will primarily refer to wearable computing devices.
+Though there are a multitide of classes of wearable devices currently in existance, for the the purposes of the rest of this paper, in the interest of studying interaction with the technology, wearable devices will refer to wearable computing devices.
 
 \section{Background / Prior literature}
 
-The wearable computing devices that this paper is interested in include Google Glass and Samsung Wear, and other accessories that have been converted into wearable computing devices. The following are studies and reports that centered around the common themes of design challenges of other wearable devices.
+The wearable computing devices that this paper is interested in include Google Glass and Samsung Wear, two wearables manufactured by Google. The following are studies and reports that centered around the common themes of design challenges of other wearable devices.
 
 Witt et. al (2006) investigated the challenges of developing a hands-free interface for a computing system \cite{witt}. The authors developed a set of design challenges for hands-free interfaces, and with those constraints in mind, designed a wearable electronic glove that allows a user to control aircraft maintenance software. The paper identifies that small hardware, ability to perform hands-free operation, and the capability to use such an interface with minimal focus, as some of the constraints to designing a hands-free wearable device.
 
@@ -35,39 +35,53 @@ Zhang, et al (2014) explored alternative paradigms of interaction with the Googl
 Todi, et al (2014) investigated incorporating wearables into jackets \cite{todi}. The authors attempted to create a user-interface that was seamlessly integrated with clothing, eliminating or reducing the need for the user to focus their attention on a cell phone to interact with it. Ultimately the objective was to develop a wearble interface that would permit secrecy and security in the use of electronics, and reduce the saliency of such electronics in social settings.  The means to acheive this included embedding the wearable devices within jackets and employing the use of distinct, tangible buttons with various functionalities.
 
 \section{Methods / Design Principles} 
-What seems to be the most important/relevant information? Why is what you have chosen the most relevant? What are the prevailing set of views? (discussing all of this in the next section in depth) 
 
-The following are a set of some common design principles in wearable computing devices.
+In order to determine the specific usability challenges, it helps to first examine the design guidelines of wearable software. The following are some of the guidelines for designing interfaces on Google Glass and Android Wear:
 
 \begin{enumerate}
-\item{Minimize errors by making large buttons}
-\item{Make interactions as quick as possible}
-\item{Deliver minimal but precisely relevant information}
-\item{Smart Notifications (not often, and only at appropriate times)}
-\item{Provide feedback about system state (similarly to conventional devices)}
+\item{Minimize errors with large buttons}
+\item{Make interactions as quick brainless, and unobtrusive as possible}
+\item{Deliver succint information}
+\item{Provide contextual notifications}
 \end{enumerate}
 
-\subsection{Minimize errors}
+\subsection{Minimize errors with large buttons}
 Wearable devices are by nature, smaller than tradtional computing devices, in order to inconspicously blend in with the wearer. As Witt et al point out, this leads to hardware designers creating a system that uses the least amount of hardware possible \cite{witt}. Because of smaller hardware specifications, the size of display devices for wearables are naturally limited. This can be observed in the screen sizes of the Google glass and Samsung Wear. The Google Glass display area is the equivalent of a ``25 inch high definition screen from eight feet away'' \cite{goog2}.
 
-Though the user is limited with smaller display sizes on Android Wear platforms, the design documents still encourages developers to integrate Fitts' law into their design patterns. The formal design principles encourage developers to ``design for big gestures'' \cite{andr}. Rather than forcing the user to try and use small interface components, the concept is to make user interface components as big as possible so the user does not have to worry about being precise with their gestures. This is especially important because watches can potentially be used when active. These bigger buttons that are encouraged by the design documents naturally are wider buttons, which according to Fitts' law, are easier to interact with, and minimize errors. This allows users to make imprecise swipes, and focus more on completing their task, than focusing on the precision of the gestures needed to complete their tasks.
+Though the user is limited with smaller display sizes on Android Wear platforms, the design documents still indirectly encourages developers to integrate Fitts' law into their design patterns. The formal design principles encourage developers to ``design for big gestures'' \cite{andr}. Rather than forcing the user to try and use small interface components, the concept is to make user interface components as big as possible so the user does not have to worry about being precise with their gestures. This is especially important because watches can potentially be used when active. These bigger buttons that are encouraged by the design documents naturally are wider buttons, which according to Fitts' law, are easier to interact with, and minimize errors. This allows users to focus more on completing tasks, than focusing on the precision of the gestures needed to complete the tasks.
 
-\subsection{Make interactions as quick as possible}
-Wearable devices are designed to be integrated seamlesly as a compliment to the user's life. Both Google and Android Wear design documents recognize a dichotomy between conventional devices and wearables. While desktop computers and mobile phones are meant to be used for extended periods of time, they state, wearables are meant to be used for quick tasks \cite{andr} \cite{goog}. Because of this, design documents for both Google Glass and Android Wear encourage developers to design software that allows the user to complete tasks with very few gestures. Google Wear design principles state that if any task on a Wear device takes the user longer than 5 seconds to perform, the developer should reconsider the implementation of the task \cite{andr}. The same documentation states that interfaces on the device should not impair the user's ability to engage in a conversation, in terms of maintaining eye contact and train of thought \cite{andr}.
+\subsection{Make interactions as quick, brainless, and unobtrusive as possible}
+Wearable devices are designed to be an unobtrusive compliment to the user's life. Both Google and Android Wear design documents recognize use this principle to establish a dichotomy between conventional devices and wearables. While desktop computers and mobile phones are meant to be used for extended periods of time, the Google guidelines for these devices state that wearables are meant to be used for quick tasks \cite{andr} \cite{goog}. Because of this, design documents for both systems encourage developers to design software that allow the user to complete tasks with the least amount of gestures possible. Google Wear design principles state that if any task on a Wear device takes the user longer than 5 seconds to perform, the developer should reconsider the implementation of the task \cite{andr}. 
 
-Google Glass also aims to minimize its saliency in the life of the user, encouraging development of interfaces that ``supplement the user's life without taking away from it'' \cite{goog}. It promotes an interaction paradigm of ``fire-and-forget'', where the software allows the user to complete tasks and immediately get back to their lives.
+The Android Wear documentation also states that interfaces on the device should be so quick that they never impair the user's ability to engage in a conversation, in terms of maintaining eye contact and train of thought \cite{andr}. This is one of the design paradigms of the Android Wear platform: designing apps that require ``zero or low interaction'' \cite{andr2}.
 
-\subsection{Deliver Minimal, but precise and relevant information}
+Google Glass also aims to minimize its saliency in the life of the user, encouraging development of interfaces that ``supplement the user's life without taking away from it'' \cite{goog}. It promotes an interaction paradigm of ``fire-and-forget'', in which the software allows the user to complete tasks and then immediately get back to their life away from the device \cite{goog}.
 
-\subsection{Provide Smart Notifications}
+\subsection{Deliver succint information}
+Because of the limited area of screen sizes, and the desire for users to not become absorbed in their wearable, Google Glass and Android wear documentation both state that the only information displayed should be that which is absolutely necessary for the completion of the desired task, eliminating unnecessary words, pictures, etc. Android Wear describes how using this design paradigm of ``low information density'' allows the user to finish interaction with the device quickly, with the efficiency similar to that of checking the time on a normal watch \cite{andr3}. 
 
-\subsection{Provide feedback about system state}
+\subsection{Provide Contextual Notifications}
+In order to prevent the user from having to interact with the device to retrieve information, both the Google Glass and Android wear design documents encourage developers to provide notifications based on the context of the user's environment. Android Wear guidelines explains that Wear apps possess awareness of, and take into account the time, user's physical activity, user's location, and more, in order to deliver information when the user needs it, without the individual having to seek out the information\cite{andr2}. Google glass also aims to provide such a context-driven notification system. The example Google provides in their guidelines is a user's shopping list automatically appearing on the display device when the user arrives at a grocery store \cite{goog}.
+
+Both platforms also discuss the importance of moderation in delivering notifications, and making sure they are delivered at the right time. Because of the proximity to the user's body, vibration or audible notifications are much more salient than those of conventional devices. They both address how satisfaction can be lowered if an application delivers too many notifications, or delivers them at inconvenient times \cite{goog} \cite{andr}.
 
 \section{Discussion}
+After Reviewing the documentation for the two devices, it has become apparent that wearable computing devices and their software are subject to a mostly-different set of design constraints than software on traditional computing devices. as well as the other external sources, I propose that  
 
-bring in your own thoughts. 
+-Based on the information presented above, I believe the greatest challenges to the usability of wearable are their size and the fact that humans are mobile creatures.
 
-what do you think influences the topic the most?
+-efficiency is most important usability metric for both of the devices
+
+-principles that gain importance:
+	-fitt's law
+	-bringing the content to the user (visible navigation)
+	-anticipation of user actions (contextual notifications)
+	-undoing actions
+	-tognazzini ``do not simplify by eliminating necessary capabilities''
+	
+-principles that lose importance
+	-hotspot aspect of fitts' law (lack of input pointer device)
+	-feedback(since usually a state change is indicatd by entire screen changing, and tasks are meant to take less than 5 seconds, there is little need to provide feedback )
 
 do you agree or disagree with the literature?
 
