@@ -66,12 +66,11 @@ In order to prevent the user from having to interact with the device to retrieve
 Both platforms also discuss the importance of moderation in delivering notifications, and making sure they are delivered at the right time. Because of the proximity to the user's body, vibration or audible notifications are much more salient than those of conventional devices. They both address how satisfaction can be lowered if an application delivers too many notifications, or delivers them at inconvenient times \cite{goog} \cite{andr}.
 
 \section{Discussion-Usability Principles and Mental Models}
-After Reviewing the design guidelines for the two devices as well as the additinal sources, it has become apparent that wearable computing devices and their software are subject to a mostly-different set of design constraints than traditional computing devices. I  propose, based on the device guidelines, that the designers prioritize efficiency as the most important usability metric in their devices. In the interest of making the devices as efficient as possible, and ultimately, as usable as possible, I propose that the main usability issues of the devices that must be accomodated for revolve around 3 inherent characteristics of the devices.
+Wearables are meant to represent a similar mental model to those of traditional computing devices, however they focus on integrating human mobility with these devices. After Reviewing the design guidelines for the two devices as well as the additinal sources, it has become apparent that wearable computing devices and their software are subject to a mostly-different set of design constraints than traditional computing devices. I  propose, based on the device guidelines, that the designers prioritize efficiency as the most important usability metric in their devices. In the interest of making the devices as efficient as possible, and ultimately, as usable as possible, I propose that the main usability issues of the devices that must be accomodated for revolve around 3 inherent characteristics of the devices.
 
 \begin{enumerate}
 \item{Smaller size of display hardware}
-\item{Mobility of users while wearing the devices}
-\item{Proximity of devices to the body}
+\item{Proximity/Mobility of Devices}
 \end{enumerate}
 
 \subsection{Smaller display hardware}
@@ -81,24 +80,17 @@ Additionally, in traditional computing devices, larger screen sizes allow softwa
 
 Bringing the content to the user and reducing screen counts, two concepts described by Bruce Tognazzini's \textbf{visible navigation} principle, are arguably more important in wearables than in traditional computing devices \cite{tog}. The concept of contextual notifications in both Google Glass and Android Wear directly reduce the amount of navigation and number of screens required to access information; the content being delivered in such notifications automatically removes \textit{all} of the navigation required to deliver content to the user. The implementation of contextual notifications also relies strongly on the concept of Tognazzini's principle of \textbf{anticipation}. In order to deliver the \textit{correct} information, the system must be able to accurately predict what the user needs or wants. Being able to gauge \textit{when} the user wants such information, also relies on accurate anticipation on the part of the system to prevent intrusive notifications which could potentially lower user satisfaction \cite{tog}.
 
-The hotspot aspect of \textit{Fitt's law} loses importance with wearables, as there are no pointer input devices. TThere is therefore no ability to right click, or move a pointer to the outside edges of the screen when the application is taking up the entire screen.
+Another of Tognazzini's principles is to not sacrifice functionality of a system in lieu of interface simplicity \cite{tog}. This gains much more importance with wearables, as simplicty is one of the core design themes associated with using smaller display devices.
 
-\subsection{Mobilty while wearing devices}
-Because wearables are meant to be used all the time, they need to be friendly to the natural mobility of users. Using a device while moving increases the chance of errors. Additionally, using a device when moving should require as few interactions as possible, so the user does not have to focus all of their attention on the device.  \textbf{Fitts' law} plays a greater role in the usability of Android Wear. The buttons are naturally closer together, because of the smaller screen sizes. The Android Wear design guidelines acknowledgement that larger buttons are better for interfaces
+The hotspot aspect of \textit{Fitt's law} also loses importance with wearables, as there are no pointer input devices. There is therefore no ability to right click, or move a pointer to the outside edges of the screen when the application is taking up the entire screen.
 
-\subsection{Proximity of devices to the body}
-Because wearables are worn so close to the body,
+\subsection{Proximity/Mobilty of devices}
+Because wearables are more intimately connected with the user than conventional computing devices, the principle of notifying the user about the state of the system loses importance. Both of the platforms state in the design guidelines that constant notifications on these devices are much more noticeable, than those on a computer or a mobile phone. An excess of notifications, they state, can lead to irritated, and therefore, unsatisfied users. Additionally, because many of the actions these devices perform occur without the user requesting information, there is far less user interaction that the system needs to acknowledge. 
 
-
--principles that gain importance:
-	-fitt's law
-	-undoing actions
-	-tognazzini ``do not simplify by eliminating necessary capabilities''
-	
--principles that lose importance
-	-feedback(since usually a state change is indicatd by entire screen changing, and tasks are meant to take less than 5 seconds, there is little need to provide feedback )
+The principle of allowing the user to undo errors also gains importance with wearables. The guidelines for the platforms demonstrate that the designers intended the devices to accomodate active lifestyles.  The wearables must be able to account for errors users might make while using the devices in an active setting. For example, users might use either device while running, or riding a bike, and could potentially press the wrong button.
 
 \section{Conclusion}
+The mental-model designers imagined of Android Wear and Google glass intended the devices to be used as natural, unobtrusive extensions to humans. This naturally 
 
 \bibliographystyle{plain}
 \bibliography{mental-model}
