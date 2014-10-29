@@ -6,8 +6,8 @@ h1 {
 	font-family: 'Arvo', serif;
 }
 .btn-blend{
-	background-color: #101010;
-	border-color: #101010;
+	background-color: #F8F8F8;
+	border-color: #F8F8F8;
 	color:#777;
 }
 .btn-large{
@@ -17,3 +17,28 @@ h1 {
 body{
 	background-color:#333333
 }
+.button-wrapper{
+	height: 200px;
+	margin-top: 20px;
+	
+	
+}
+.action-button{
+	height: 150px;
+	border-radius: 7px;
+	font-size: 23px;
+}
+
+.action-button :hover{
+	opacity: .25;
+}
+.character-buttons{
+	border: 2px solid white;
+}
+.user-greeting{
+	font-size: 18px;
+}
+#rightNavButtons{
+	width: 500px;
+}
+
