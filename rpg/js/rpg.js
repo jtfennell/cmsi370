@@ -4,6 +4,7 @@ to work on:
 	-dropdown menu with big buttons
 	-content area 
 	-game itself
+	-need to store last few (5) user actions as objects, in order to allow the user to undo
 	
 		
 
@@ -52,13 +53,17 @@ var getCharacter = function(){
 	);
 }
 
-//create modal form to receive character data
+
 var addCharacter = function(){
 
 }
 
 var editCharacter = function(){
 
+}
+
+var alertUser = function(notification){
+	$('#alertBar').show();
 }
 
 
@@ -72,9 +77,8 @@ var getCharacterId = function(characterName){
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
       // Do something with the character list.
-      characters.forEach(function (character) {
-        console.log(character);
-      });
+      characters.map(function (character) {
+       return this.characterName = characterName});
     }
 	);
 }
@@ -119,7 +123,6 @@ var hideLoginModal = function(){
 	if ($('#userNameInput').val() !== "") {
 		$('#closeModal').click();
 	};
-
 }
 
 $(document).ready(checkIfUserLoggedIn());
