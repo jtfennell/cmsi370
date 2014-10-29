@@ -46,7 +46,6 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right" id = "rightNavButtons">
-            
             <li>
               <li>
               <div id = "userInfoLogin">
@@ -63,7 +62,7 @@
                   <li><a href="#">Another action</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">Help</a></li>
                 </ul>
               </div>
             </li>
@@ -71,6 +70,11 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+    <div id = "alertBar" class="alert alert-warning alert-dismissible animated bounceInDown" role="alert" hidden>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <strong id = "alertMessage">Character Deleted
+       </strong> <button class="btn btn-link alert-link ">Undo</a>
+    </div>
     <div class="container">
       <div class = "row">
         <div class="col-md-4" >
@@ -115,7 +119,7 @@
           </div>
          </div>
       </div>
-       <div class = "row">
+       <div class = "row" hidden = "true" z>
         <div class = "col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-th-list"></span> Display Characters
