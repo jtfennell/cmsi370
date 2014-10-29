@@ -1,9 +1,11 @@
 $(function(){
 /**
 to work on:
-	-create right click menu
-	-login menu
-		-local storage for username
+	-dropdown menu with big buttons
+	-content area 
+	-game itself
+	
+		
 
 **/
 var $searchButton = $('#searchButton');
@@ -86,8 +88,13 @@ var checkIfUserLoggedIn = function(){
 }
 
 var fillInUserName = function(userName){
+	var $logoutButton = $('<button></button>');
+	$logoutButton.text('Log out');
+	$logoutButton.addClass('btn navbar-btn btn-link')
+
 	$("#userInfoLogin").empty().text("Welcome back, " + userName);
-	$('#userInfoLogin').addClass('navbar-btn user-greeting');
+	$('#userInfoLogin').append($logoutButton);
+	$('#userInfoLogin').addClass('user-greeting');
 }
 
 var getUserName = function(){
@@ -109,7 +116,10 @@ var clearLocalStorage = function(){
 }
 
 var hideLoginModal = function(){
-	$('#closeModal').click();
+	if ($('#userNameInput').val() !== "") {
+		$('#closeModal').click();
+	};
+
 }
 
 $(document).ready(checkIfUserLoggedIn());
