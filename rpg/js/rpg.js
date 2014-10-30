@@ -5,6 +5,8 @@ to work on:
 	-content area 
 	-game itself
 	-need to store last few (5) user actions as objects, in order to allow the user to undo
+	-ask user if they want to create duplicate character if the same character has already been created
+	notification bar: "view button" calls method that creates table of characters, highlights the table row that was changed
 	
 		
 
@@ -26,6 +28,12 @@ var checkIfUserLoggedIn = function(){
 	if(localStorage.getItem("userName") !== null){
 		fillInUserName();
 	};
+}
+
+var setContentHeight = function(){
+var optimalWindowHeight = window.innerHeight *.6;
+
+$('.contentArea').height(optimalWindowHeight + "px");
 }
 
 var closeSearchBar = function(){
@@ -53,9 +61,34 @@ var getCharacter = function(){
 	);
 }
 
+//allows optional 
+var displayCharacters = function(highlightedRow){
+
+}
 
 var addCharacter = function(){
 
+
+
+
+$.ajax({
+    type: 'POST',
+    url: "http://lmu-diabolical.appspot.com/characters",
+    data: JSON.stringify({
+        name: "Sam",
+        classType: "rogue",
+        gender: "MALE",
+        level: 89,
+        money: 4732349
+    }),
+    contentType: "application/json",
+    dataType: "json",
+    accept: "application/json",
+    complete: function (jqXHR, textStatus) {
+        // The new character can be accessed from the Location header.
+        console.log("It's aliiiiiiiiiiiiiiiiiiiiiiiiiive");
+    }
+});
 }
 
 var editCharacter = function(){
@@ -64,6 +97,9 @@ var editCharacter = function(){
 
 var alertUser = function(notification){
 	$('#alertBar').show();
+
+	$('#alertMessage').text("character " + notification.action + ": " + notification.character);
+
 }
 
 
@@ -127,9 +163,14 @@ var hideLoginModal = function(){
 
 $(document).ready(checkIfUserLoggedIn());
 $searchButton.mouseenter(openSearchBar);
+setContentHeight();
+$(window).resize(setContentHeight);
 $searchDiv.mouseleave(closeSearchBar);
 $charSearchBtn.click(getCharacter);
 $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $('#cls').click(clearLocalStorage);
+alertUser({character:'"jeff"',
+	action: "Modified",
+});
 })
