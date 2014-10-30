@@ -16,6 +16,7 @@ var $searchDiv = $('#searchDiv');
 var $searchBar = $('#searchBar');
 var $charSearchBtn = $('#charSearchBtn');
 var $logInBtn = $("#logInBtn");
+var $createNewCharacterBtn = $('#createNewCharacterBtn');
 
 var openSearchBar = function(){
 	$searchDiv.show();
@@ -31,7 +32,7 @@ var checkIfUserLoggedIn = function(){
 }
 
 var setContentHeight = function(){
-var optimalWindowHeight = window.innerHeight *.6;
+var optimalWindowHeight = window.innerHeight *.58;
 
 $('.contentArea').height(optimalWindowHeight + "px");
 }
@@ -61,34 +62,51 @@ var getCharacter = function(){
 	);
 }
 
-//allows optional 
-var displayCharacters = function(highlightedRow){
-
+var displayCharacters = function(){
+$.getJSON(
+    "http://lmu-diabolical.appspot.com/characters",
+    function (characters) {
+      $('tbody').append(characters.map(function (character){
+      		return $('<tr></tr>')
+      		.append($('<td><.td>').text(character.name))
+      		.append($('<td><.td>').text(character.gender))
+      		.append($('<td><.td>').text(character.classType))
+      		.append($('<td><.td>').text(character.level))
+      		.append($('<td><.td>').text(character.money))		
+      }));
+    }
+);
 }
 
 var addCharacter = function(){
+	name = $('#addCharacterName').val();
+	classType = $('#addCharacterClass').val();
+	gender = $('#addCharacterGender').val();
+	level = $('#addCharacterLevel').val();
+	money = $('addCharacterMoney').val();
 
-
-
-
-$.ajax({
-    type: 'POST',
-    url: "http://lmu-diabolical.appspot.com/characters",
-    data: JSON.stringify({
-        name: "Sam",
-        classType: "rogue",
-        gender: "MALE",
-        level: 89,
-        money: 4732349
-    }),
-    contentType: "application/json",
-    dataType: "json",
-    accept: "application/json",
-    complete: function (jqXHR, textStatus) {
-        // The new character can be accessed from the Location header.
-        console.log("It's aliiiiiiiiiiiiiiiiiiiiiiiiiive");
-    }
-});
+	$.ajax({
+	    type: 'POST',
+	    url: "http://lmu-diabolical.appspot.com/characters",
+	    data: JSON.stringify({
+	        name: name,
+	        classType: classType,
+	        gender: gender,
+	        level: level,
+	        money: money
+	    }),
+	    contentType: "application/json",
+	    dataType: "jsonp",
+	    accept: "application/json",
+	    complete: function (jqXHR, textStatus) {
+	        // The new character can be accessed from the Location header.
+	        
+	        alertUser({
+	        	action: "added",
+	        	character: name
+	        })
+	    }
+	});
 }
 
 var editCharacter = function(){
@@ -101,7 +119,6 @@ var alertUser = function(notification){
 	$('#alertMessage').text("character " + notification.action + ": " + notification.character);
 
 }
-
 
 //creates notification for when a character is added, deleted, edited, etc
 var editNotification = function(){
@@ -161,16 +178,20 @@ var hideLoginModal = function(){
 	};
 }
 
+setContentHeight();
+displayCharacters();
 $(document).ready(checkIfUserLoggedIn());
 $searchButton.mouseenter(openSearchBar);
-setContentHeight();
 $(window).resize(setContentHeight);
 $searchDiv.mouseleave(closeSearchBar);
 $charSearchBtn.click(getCharacter);
 $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $('#cls').click(clearLocalStorage);
+$createNewCharacterBtn.click(addCharacter);
+$('#refreshCharListBtn').click(displayCharacters);
 alertUser({character:'"jeff"',
 	action: "Modified",
 });
+displayCharacters();
 })
