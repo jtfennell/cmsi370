@@ -5,6 +5,7 @@ to work on:
 	-need to store last few (5) user actions as objects, in order to allow the user to undo
 	-ask user if they want to create duplicate character if the same character has already been created
 	notification bar: "view button" calls method that creates table of characters, highlights the table row that was changed
+	-validation for inputs
 **/
 var $searchButton = $('#searchButton');
 var $searchDiv = $('#searchDiv');
@@ -63,17 +64,19 @@ var displayCharacters = function(){
 $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
-      $('tbody').append(characters.map(function (character){
+      $('#tbl-body').append(characters.map(function (character){
+      		/*
       		var $newRow = $('<tr></tr>');
       		//stores character object in the row element, to be accessed when the user clicks or hovers over the element
       		$newRow.data('character', character);
       		var $editButton = $('<button></button>');
       		$editButton.text('Edit');
-      		$editButton.addClass('btn btn-info');
+      		$editButton.addClass('btn btn-info edit-btn');
+      		$('.edit-btn').click(editCharacter);
 
       		var $deleteButton = $('<button></button>');
       		$deleteButton.text('delete');
-      		$deleteButton.addClass('btn btn-warning');
+      		$deleteButton.addClass('btn btn-danger edit-btn');
       		
       		return $newRow
       		.append($('<td><.td>').text(character.name))
@@ -83,22 +86,39 @@ $.getJSON(
       		.append($('<td><.td>').text(character.money))
       		.append($('<td></td>').append($editButton))
       		.append($('<td></td>').append($deleteButton))
-
+					*/
+					
+					$tr = $('#tblRowTemplate').clone();
+					$tr.find('.tblCharacterName').text(character.name);
+					$tr.find('.tblCharacterGender').text(character.gender);
+					$tr.find('.tblCharacterClass').text(character.classType);
+					$tr.find('.tblCharacterLevel').text(character.level);
+					$tr.find('.tblCharacterMoney').text(character.money);
+					return $tr;
       }));
     }
 );
 }
 
-var modifyCharacter = function(character){
+var editCharacter = function(){
+	var character = $(this).parent().parent().data('character');
+	console.log(JSON.stringify(character));
+}
 
+var  validateAddInputs = function(){
+	name = $('#addCharacterName').val();
+	classType = $('#addCharacterClass').val();
+	gender = $('#addCharacterGender').val().toUpperCase();
+	level = parseInt($('#addCharacterLevel').val());
+	money = parseInt($('addCharacterMoney').val());
 }
 
 var addCharacter = function(){
 	name = $('#addCharacterName').val();
 	classType = $('#addCharacterClass').val();
-	gender = $('#addCharacterGender').val();
-	level = $('#addCharacterLevel').val();
-	money = $('addCharacterMoney').val();
+	gender = $('#addCharacterGender').val().toUpperCase();
+	level = parseInt($('#addCharacterLevel').val());
+	money = parseInt($('addCharacterMoney').val());
 
 	$.ajax({
 	    type: 'POST',
@@ -111,20 +131,20 @@ var addCharacter = function(){
 	        money: money
 	    }),
 	    contentType: "application/json",
-	    dataType: "jsonp",
+	    dataType: "json",
 	    accept: "application/json",
 	    complete: function (jqXHR, textStatus) {
+	        alert(textStatus);
 	        alertUser({
 	        	action: "added",
 	        	character: name
 	        })
 	    }
 	});
-}
 
-var editCharacter = function(){
 
 }
+
 
 var alertUser = function(notification){
 	$('#alertBar').show();
@@ -199,4 +219,5 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 displayCharacters();
+
 })
