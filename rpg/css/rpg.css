@@ -58,4 +58,7 @@ body{
 tr :hover{
 	cursor:pointer;
 }
+.title-row{
+	height: 87px;
+}
 
