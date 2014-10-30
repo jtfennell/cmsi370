@@ -63,11 +63,16 @@ var getCharacter = function(){
 }
 
 var displayCharacters = function(){
+	$('tbody').children().remove();
 $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
       $('tbody').append(characters.map(function (character){
-      		return $('<tr></tr>')
+      		var $newRow = $('<tr></tr>');
+      		//stores character object in the row element, to be accessed when the user clicks or hovers over the element
+      		$newRow.data('character', character);
+
+      		return $newRow
       		.append($('<td><.td>').text(character.name))
       		.append($('<td><.td>').text(character.gender))
       		.append($('<td><.td>').text(character.classType))
@@ -96,7 +101,7 @@ var addCharacter = function(){
 	        money: money
 	    }),
 	    contentType: "application/json",
-	    dataType: "jsonp",
+	    dataType: "json",
 	    accept: "application/json",
 	    complete: function (jqXHR, textStatus) {
 	        // The new character can be accessed from the Location header.
@@ -117,11 +122,6 @@ var alertUser = function(notification){
 	$('#alertBar').show();
 
 	$('#alertMessage').text("character " + notification.action + ": " + notification.character);
-
-}
-
-//creates notification for when a character is added, deleted, edited, etc
-var editNotification = function(){
 
 }
 
@@ -148,6 +148,7 @@ var fillInUserName = function(userName){
 	var $logoutButton = $('<button></button>');
 	$logoutButton.text('Log out');
 	$logoutButton.addClass('btn navbar-btn btn-link')
+	$logoutButton.click(clearLocalStorage);
 
 	$("#userInfoLogin").empty().text("Welcome back, " + userName);
 	$('#userInfoLogin').append($logoutButton);
@@ -187,7 +188,6 @@ $searchDiv.mouseleave(closeSearchBar);
 $charSearchBtn.click(getCharacter);
 $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
-$('#cls').click(clearLocalStorage);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 alertUser({character:'"jeff"',
