@@ -1,15 +1,10 @@
 $(function(){
 /**
 to work on:
-	-dropdown menu with big buttons
-	-content area 
 	-game itself
 	-need to store last few (5) user actions as objects, in order to allow the user to undo
 	-ask user if they want to create duplicate character if the same character has already been created
 	notification bar: "view button" calls method that creates table of characters, highlights the table row that was changed
-	
-		
-
 **/
 var $searchButton = $('#searchButton');
 var $searchDiv = $('#searchDiv');
@@ -62,6 +57,7 @@ var getCharacter = function(){
 	);
 }
 
+
 var displayCharacters = function(){
 	$('tbody').children().remove();
 $.getJSON(
@@ -71,16 +67,30 @@ $.getJSON(
       		var $newRow = $('<tr></tr>');
       		//stores character object in the row element, to be accessed when the user clicks or hovers over the element
       		$newRow.data('character', character);
+      		var $editButton = $('<button></button>');
+      		$editButton.text('Edit');
+      		$editButton.addClass('btn btn-info');
 
+      		var $deleteButton = $('<button></button>');
+      		$deleteButton.text('delete');
+      		$deleteButton.addClass('btn btn-warning');
+      		
       		return $newRow
       		.append($('<td><.td>').text(character.name))
       		.append($('<td><.td>').text(character.gender))
       		.append($('<td><.td>').text(character.classType))
       		.append($('<td><.td>').text(character.level))
-      		.append($('<td><.td>').text(character.money))		
+      		.append($('<td><.td>').text(character.money))
+      		.append($('<td></td>').append($editButton))
+      		.append($('<td></td>').append($deleteButton))
+
       }));
     }
 );
+}
+
+var modifyCharacter = function(character){
+
 }
 
 var addCharacter = function(){
@@ -101,11 +111,9 @@ var addCharacter = function(){
 	        money: money
 	    }),
 	    contentType: "application/json",
-	    dataType: "json",
+	    dataType: "jsonp",
 	    accept: "application/json",
 	    complete: function (jqXHR, textStatus) {
-	        // The new character can be accessed from the Location header.
-	        
 	        alertUser({
 	        	action: "added",
 	        	character: name
@@ -190,8 +198,5 @@ $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
-alertUser({character:'"jeff"',
-	action: "Modified",
-});
 displayCharacters();
 })
