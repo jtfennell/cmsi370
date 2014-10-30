@@ -96,21 +96,31 @@
                 <th>Class</th>
                 <th>Level</th>
                 <th>Money</th>
+                <th><th>
+                <th><th>
               </thead>
               <tbody id = "tbl-body">
-                <tr id = "tblRowTemplate">
-                  <td class = "tblCharacterName"></td>
-                  <td class = "tblCharacterGender"></td>
-                  <td class = "tblCharacterClass"></td>
-                  <td class = "tblCharacterLevel"></td>
-                  <td class = "tblCharacterMoney"></td>
-                </tr>
               </tbody>
             </table>
+            <div hidden>
+              <tr id = "tblRowTemplate">
+                <td class = "tblCharacterName"></td>
+                <td class = "tblCharacterGender"></td>
+                <td class = "tblCharacterClass"></td>
+                <td class = "tblCharacterLevel"></td>
+                <td class = "tblCharacterMoney"></td>
+                <td>
+                  <button class = 'btn btn-info edit-btn'>Edit</button>
+                </td>
+                <td>
+                  <button class = 'btn btn-warning delete-btn'>Delete</button>
+                </td>
+              </tr>
+            </div>
         </div>
       </div>
        <div class = "row" >
-        <div class = "col-md-2 button-wrapper">
+        <div class = "col-md-2 button-wrapper col-md-offset-2">
           <button id = "refreshCharListBtn" class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-th-list" ></span> Refresh Character List
           </button>
@@ -122,22 +132,12 @@
         </div>
         <div class = "col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
-           <span class="glyphicon glyphicon-remove"></span> Remove Character
-          </button>
-        </div>
-        <div class = "col-md-2 button-wrapper">
-          <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
-             <span class="glyphicon glyphicon-wrench"></span> Modify a Character
-          </button>
-        </div>
-        <div class = "col-md-2 button-wrapper">
-          <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-user"></span> Spawn Random Character
           </button>
         </div>
         <div class = "col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
-             <span class="glyphicon glyphicon-cutlery"></span> Generate a Random Item
+             <span class="glyphicon glyphicon-cutlery"></span> Generate Random Item
           </button>
         </div>
       </div>
@@ -211,24 +211,24 @@
             <form role="form">
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterName">Character Name</label>
-                <input value = "James Yen" type="text" class="form-control" id="addCharacterName" placeholder="Enter Name">
+                <input type="text" class="form-control" id="addCharacterName" placeholder="Enter Name">
               </div>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterGender">Gender</label>
-                <input value = "male"type="text" id="addCharacterGender" class = "form-control" placeholder = "Enter Character Gender">
+                <input type="text" id="addCharacterGender" class = "form-control" placeholder = "Enter Character Gender">
               </div>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterClass">Class Type </label>
-                <input value = "Enlightened"type="text" class="form-control" id="addCharacterClass" placeholder="Enter Class Type">
+                <input type="text" class="form-control" id="addCharacterClass" placeholder="Enter Class Type">
               </div>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterLevel">Level</label>
-                <input value = "1000000" type="number" min = "0" id="addCharacterLevel" class = "form-control" placeholder = "Enter Character Level">
+                <input  type="number" min = "0" id="addCharacterLevel" class = "form-control" placeholder = "Enter Character Level">
               </div>
               <label for="form-group input-group addCharacterMoney">Money</label>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon">$</span>
-                <input value = "1000"type="number" min = "0" id="addCharacterMoney" class = "form-control" placeholder = "Enter amount of money">
+                <input type="number" min = "0" id="addCharacterMoney" class = "form-control" placeholder = "Enter amount of money">
               </div>
             </form>
         </div>
