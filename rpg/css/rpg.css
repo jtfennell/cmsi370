@@ -41,4 +41,21 @@ body{
 #rightNavButtons{
 	width: 500px;
 }
+.alert-link{
+	margin-left:30px;
+}
+.pageTitle{
+	margin-top: 0px;
+}
+.contentArea{
+	background-color: #CECCCC;
+	border-radius: 10px;
+	overflow: auto;
+}
+.panel-heading{
+	font-size: 25px;
+}
+tr :hover{
+	cursor:pointer;
+}
 
