@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Diabolical</title>
-
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/rpg.css">
@@ -30,7 +29,6 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class = "nav navbar-nav navbar-left">
@@ -83,6 +81,8 @@
         </div>
         <div class = "col-md-4"></div>
       </div>
+      <div class = "row feedback">
+      </div>
       <div class = "row contentArea">
         <div class="panel panel-default">
           <!-- Default panel contents -->
@@ -106,7 +106,7 @@
                     <td class = "char-level"></td>
                     <td class = "char-money"></td>
                     <td>
-                      <button class = 'btn btn-info edit-btn'>Edit</button>
+                      <button data-toggle="modal" data-target="#edit-modal" class = 'btn btn-info edit-btn'>Edit</button>
                     </td>
                     <td>
                       <button class = 'btn btn-warning delete-btn'>Delete</button>
@@ -197,7 +197,7 @@
           </div>
         </div>
       </div>
-      <div class="modal fade edit-modal">
+      <div class="modal fade" id = "edit-modal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -207,17 +207,19 @@
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  <label for="edit-name">Name</label>
+                  <input type="text" class="form-control" id="edit-name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <label for="edit-gender">Password</label>
+                  <select name="select" class="form-control" id="edit-gender" placeholder="select one">
+                    <option value="MALE" selected>Male</option>
+                    <option value="FEMALE">Female</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputFile">File input</label>
-                  <input type="file" id="exampleInputFile">
-                  <p class="help-block">Example block-level help text here.</p>
+                  <label for="edit-class">Class</label>
+                  <input type="text" class="form-control" id="edit-class" placeholder="Enter name">
                 </div>
                 <div class="checkbox">
                   <label>
@@ -247,10 +249,10 @@
                 <label for="addCharacterName">Character Name</label>
                 <input type="text" class="form-control" id="addCharacterName" placeholder="Enter Name">
               </div>
-              <div class="form-group input-group input-group-lg">
-                <label for="addCharacterGender">Gender</label>
-                <input type="text" id="addCharacterGender" class = "form-control" placeholder = "Enter Character Gender">
-              </div>
+              <select name="select" class= " form-group input-group input-group-lg form-control" id="addGender" placeholder="select one">
+                    <option value="MALE" selected>Male</option>
+                    <option value="FEMALE">Female</option>
+              </select>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterClass">Class Type </label>
                 <input type="text" class="form-control" id="addCharacterClass" placeholder="Enter Class Type">
