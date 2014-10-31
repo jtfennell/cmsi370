@@ -59,6 +59,8 @@ var getCharacter = function(){
 }
 
 var displayCharacters = function(){
+	$('.feedback').text('Loading Characters...');
+
 	//$('tbody').children().remove();
 $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
@@ -76,14 +78,22 @@ $.getJSON(
 					tr.show();
 					return tr;
       }));
+      $('.feedback').addClass('animated fadeOut');
     }
 	);
 }
 
 var editCharacter = function(){
-	alert('editButton clicked');
 	var character = $(this).parent().parent().data('character');
-	console.log(JSON.stringify(character));
+
+	$('#edit-name').val(character.name);
+	$('#edit-gender').val(character.gender);
+	$('#edit-').val(character.name);
+	$('#edit-name').val(character.name);
+	
+	/*
+	alertUser() when returned that object created successfully
+	*/
 }
 
 var  validateAddInputs = function(){
@@ -97,7 +107,7 @@ var  validateAddInputs = function(){
 var addCharacter = function(){
 	name = $('#addCharacterName').val();
 	classType = $('#addCharacterClass').val();
-	gender = $('#addCharacterGender').val().toUpperCase();
+	gender = $('#addCharacterGender').val();
 	level = parseInt($('#addCharacterLevel').val());
 	money = parseInt($('addCharacterMoney').val());
 
