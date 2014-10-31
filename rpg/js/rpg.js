@@ -58,49 +58,30 @@ var getCharacter = function(){
 	);
 }
 
-
 var displayCharacters = function(){
-	$('tbody').children().remove();
+	//$('tbody').children().remove();
 $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
-      $('#tbl-body').append(characters.map(function (character){
-      		/*
-      		var $newRow = $('<tr></tr>');
-      		//stores character object in the row element, to be accessed when the user clicks or hovers over the element
-      		$newRow.data('character', character);
-      		var $editButton = $('<button></button>');
-      		$editButton.text('Edit');
-      		$editButton.addClass('btn btn-info edit-btn');
-      		$('.edit-btn').click(editCharacter);
-
-      		var $deleteButton = $('<button></button>');
-      		$deleteButton.text('delete');
-      		$deleteButton.addClass('btn btn-danger edit-btn');
-      		
-      		return $newRow
-      		.append($('<td><.td>').text(character.name))
-      		.append($('<td><.td>').text(character.gender))
-      		.append($('<td><.td>').text(character.classType))
-      		.append($('<td><.td>').text(character.level))
-      		.append($('<td><.td>').text(character.money))
-      		.append($('<td></td>').append($editButton))
-      		.append($('<td></td>').append($deleteButton))
-					*/
-					
-					$tr = $('#tblRowTemplate').clone();
-					$tr.find('.tblCharacterName').text(character.name);
-					$tr.find('.tblCharacterGender').text(character.gender);
-					$tr.find('.tblCharacterClass').text(character.classType);
-					$tr.find('.tblCharacterLevel').text(character.level);
-					$tr.find('.tblCharacterMoney').text(character.money);
-					return $tr;
+    	
+      $('tbody').append(characters.map(function (character){
+      		var tr = $('.tblRow').clone();
+					tr.find('.char-name').text(character.name);
+					tr.find('.char-gender').text(character.gender);
+					tr.find('.char-class').text(character.classType);
+					tr.find('.char-level').text(character.level);
+					tr.find('.char-money').text(character.money);
+					tr.data('character', character);
+					tr.find('.edit-btn').click(editCharacter);
+					tr.show();
+					return tr;
       }));
     }
-);
+	);
 }
 
 var editCharacter = function(){
+	alert('editButton clicked');
 	var character = $(this).parent().parent().data('character');
 	console.log(JSON.stringify(character));
 }
@@ -141,8 +122,6 @@ var addCharacter = function(){
 	        })
 	    }
 	});
-
-
 }
 
 
@@ -219,5 +198,6 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 displayCharacters();
+$('.edit-btn').click(editCharacter);
 
 })
