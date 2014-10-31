@@ -60,14 +60,17 @@ var getCharacter = function(){
 
 var displayCharacters = function(){
 	$('.feedback').text('Loading Characters...');
+	$('tbody').find('.tblRow').remove();
 
-	//$('tbody').children().remove();
 $.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
     	
       $('tbody').append(characters.map(function (character){
-      		var tr = $('.tblRow').clone();
+      	console.log(character.name);
+      		var tr = $('.tblRowTemplate').clone();
+      		tr.removeClass('tblRowTemplate');
+      		tr.addClass('tblRow');
 					tr.find('.char-name').text(character.name);
 					tr.find('.char-gender').text(character.gender);
 					tr.find('.char-class').text(character.classType);
