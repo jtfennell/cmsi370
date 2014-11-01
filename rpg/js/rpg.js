@@ -52,7 +52,7 @@ var getCharacter = function(){
 	  getCharacterURL,
 		  function (character) {
 		    // Do something with the character.
-		    alert("received response!")
+		    console.log("received response!")
 		  }
 	);
 }
@@ -86,38 +86,43 @@ $.getJSON(
 	);
 }
 
-var editCharacter = function(character){
+var editCharacter = function(character, parentDiv){
 	characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
 		var id = character.id;
 
-		var newName = $('#edit-name').val();
-		var newGender = $('#edit-gender').val();
-		var newClassType = $('#edit-class').val();
-		var newLevel = parseInt($('#edit-level').val());
-		var newMoney = parseInt($('#edit-money').val());
+		character.name = $('#edit-name').val();
+		character.gender = $('#edit-gender').val();
+		character.classType = $('#edit-class').val();
+		character.level = parseInt($('#edit-level').val());
+		character.money = parseInt($('#edit-money').val());
 
 		$.ajax({
     type: 'PUT',
     url: characterURL,
     data: JSON.stringify({
         id: id,
-        name: newName,
-        classType: newClassType,
-        gender: newGender,
-        level: newLevel,
-        money: newMoney
+        name: character.name,
+        classType: character.classType,
+        gender: character.gender,
+        level: character.level,
+        money: character.money
     }),
     contentType: "application/json",
     dataType: "json",
     accept: "application/json",
     success: function (data, textStatus, jqXHR) {
-        alert("Done: no news is good news.");
+        parentDiv.remove();
+        createSuccessDiv(character);
+        alertUser(
+        	{action: "Character Modified: " + character.name}
+        )
     }
 		});
 }
 
 var loadEditModal = function(){
-	var character = $(this).parent().parent().data('character');
+	var parentDiv =$(this).parent().parent();
+	var character = parentDiv.data('character');
 	var characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
 
 $('#edit-name').val(character.name);
@@ -131,7 +136,7 @@ $('#edit-money').val(character.money);
 	*/
 	$('.submit-edits').click(
 		function(){
-			editCharacter(character);
+			editCharacter(character,parentDiv);
 		})
 	$('.submit-edits').click(
 		function(){
@@ -147,11 +152,29 @@ var deleteCharacter = function(){
 	    type: 'DELETE',
 	    url: characterURL,
 	    success: function (data, textStatus, jqXHR) {
-	        alert('delete function run');
 	        console.log("Gone baby gone.");
 	    }
 	});
 		$(this).parent().parent().remove();
+}
+var createSuccessDiv = function(character){
+	 var newRow = $('.tblRowTemplate').clone();
+      newRow.find('.char-name').text(character.name);
+      newRow.find('.char-gender').text(character.gender);
+      newRow.find('.char-class').text(character.classType);
+      newRow.find('.char-level').text(character.level);
+      newRow.find('.char-money').text(character.money);
+      newRow.find('.edit-btn').click(loadEditModal);
+			newRow.find('.delete-btn').click(deleteCharacter);
+      newRow.show();
+      newRow.data('character', character);
+      newRow.addClass('success');
+      $(".contentArea").animate({ scrollTop: 0 }, 500);
+      $('tbody').prepend(newRow);
+      newRow.removeClass('tblRowTemplate').addClass('tbl-row');
+      setTimeout(function(){
+      newRow.removeClass('success')
+    	}, 5000)
 }
 
 var  validateAddInputs = function(){
@@ -163,31 +186,30 @@ var  validateAddInputs = function(){
 }
 
 var addCharacter = function(){
-	
 	$('.feedback').text('Adding Character...');
-	name = $('#addCharacterName').val();
-	classType = $('#addCharacterClass').val();
-	gender = $('#addCharacterGender').val();
-	level = parseInt($('#addCharacterLevel').val());
-	money = parseInt($('addCharacterMoney').val());
+	var character = {
+	name: $('#addCharacterName').val(),
+	classType : $('#addCharacterClass').val(),
+	gender : $('#addCharacterGender').val(),
+	level : parseInt($('#addCharacterLevel').val()),
+	money : parseInt($('addCharacterMoney').val())
+	}
 
 	$.ajax({
 	    type: 'POST',
 	    url: "http://lmu-diabolical.appspot.com/characters",
 	    data: JSON.stringify({
-	        name: name,
-	        classType: classType,
-	        gender: gender,
-	        level: level,
-	        money: money
+	        name: character.name,
+	        classType: character.classType,
+	        gender: character.gender,
+	        level: character.level,
+	        money: character.money
 	    }),
 	    contentType: "application/json",
 	    dataType: "json",
 	    accept: "application/json",
 	    complete: function (jqXHR, textStatus) {
-	       alert(gender);
-	        alert(jqXHR);
-	        alert(textStatus);
+	        createSuccessDiv(character)
 	        alertUser({
 	        	action: "added",
 	        	character: name
@@ -197,11 +219,10 @@ var addCharacter = function(){
 	$('.feedback').addClass('animated fadeOut');
 }
 
-
 var alertUser = function(notification){
 	$('#alertBar').show();
 
-	$('#alertMessage').text("character " + notification.action + ": " + notification.character);
+	$('#alertMessage').text(notification.action);
 
 }
 
@@ -270,6 +291,7 @@ $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
-displayCharacters();
-
+$('#createNewCharacterBtn').click(function(){
+	$('.add-cancel').click();
+})
 })
