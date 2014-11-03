@@ -1,10 +1,6 @@
 $(function(){
 /**
 to work on:
-	-game itself
-	-need to store last few (5) user actions as objects, in order to allow the user to undo
-	-ask user if they want to create duplicate character if the same character has already been created
-	notification bar: "view button" calls method that creates table of characters, highlights the table row that was changed
 	-validation for inputs
 **/
 var $searchButton = $('#searchButton');
@@ -40,6 +36,29 @@ var closeSearchBar = function(){
 		$searchButton.show();
 	}
 }
+var spawnRandomCharacter = function(){
+	$.getJSON(
+    "http://lmu-diabolical.appspot.com/characters/spawn",
+    function (character) {
+    	$('#addCharacterName').val(character.name);
+		$('#addCharacterClass').val(character.classType);
+		$('#addCharacterGender').val(character.gender);
+		$('#addCharacterLevel').val(character.level);
+		$('#addCharacterMoney').val(character.money);
+		$('#addCharacterId').val(getCharacterId(character.name));
+		
+		addCharacter();
+
+		$('#addCharacterName').val('');
+		$('#addCharacterClass').val('');
+		$('#addCharacterGender').val('');
+		$('#addCharacterLevel').val('');
+		$('#addCharacterMoney').val('');
+		$('#addCharacterId').val('');
+    }
+	);
+
+}
 
 var getCharacter = function(){
 	var characterName = $searchBar.val();
@@ -57,39 +76,45 @@ var getCharacter = function(){
 	);
 }
 
+
 var displayCharacters = function(){
+	$('.feedback').removeClass('animated fadeOut')
 	$('.feedback').text('Loading Characters...');
 	$('tbody').find('.tblRow').remove();
 
-$.getJSON(
+	$.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
     	
-      $('tbody').append(characters.map(function (character){
-      	console.log(character.name);
-      		var tr = $('.tblRowTemplate').clone();
-      		tr.removeClass('tblRowTemplate');
-      		tr.addClass('tblRow');
-					tr.find('.char-name').text(character.name);
-					tr.find('.char-gender').text(character.gender);
-					tr.find('.char-class').text(character.classType);
-					tr.find('.char-level').text(character.level);
-					tr.find('.char-money').text(character.money);
-					tr.data('character', character);
-					tr.find('.edit-btn').click(loadEditModal);
-					tr.find('.delete-btn').click(deleteCharacter);
-					tr.show();
-					return tr;
-      }));
-      $('.feedback').addClass('animated fadeOut');
-    }
+	    $('tbody').append(characters.map(function (character){
+	      	var tr = $('.tblRowTemplate').clone();
+	      	tr.removeClass('tblRowTemplate');
+	      	tr.addClass('tblRow');
+			tr.find('.char-name').text(character.name);
+			tr.find('.char-gender').text(character.gender);
+			tr.find('.char-class').text(character.classType);
+			tr.find('.char-level').text(character.level);
+			tr.find('.char-money').text(character.money);
+			tr.data('character', character);
+			tr.find('.edit-btn').click(loadEditModal);
+			tr.find('.delete-btn').click(deleteCharacter);
+
+			if (character.gender === 'MALE') {
+				tr.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
+			}else{
+				tr.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
+			}
+			tr.show();
+			return tr;
+	      }));
+	    }
 	);
+	$('.feedback').text('All characters loaded');
+	setTimeout(function(){$('.feedback').addClass('animated fadeOut')}, 3000);
 }
 
 var editCharacter = function(character, parentDiv){
 	characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
-		var id = character.id;
-
 		character.name = $('#edit-name').val();
 		character.gender = $('#edit-gender').val();
 		character.classType = $('#edit-class').val();
@@ -100,7 +125,7 @@ var editCharacter = function(character, parentDiv){
     type: 'PUT',
     url: characterURL,
     data: JSON.stringify({
-        id: id,
+        id: character.id,
         name: character.name,
         classType: character.classType,
         gender: character.gender,
@@ -113,13 +138,13 @@ var editCharacter = function(character, parentDiv){
     success: function (data, textStatus, jqXHR) {
         parentDiv.remove();
         createSuccessDiv(character);
-        alertUser(
-        	{action: "Character Modified: " + character.name,
-        	alertType: 'success'
-        	}
-        )
-    }
-		});
+	        alertUser(
+	        	{action: "Character Modified: " + character.name,
+	        	alertType: 'warning'
+	        	}
+	        )
+    	}
+	});
 }
 
 var loadEditModal = function(){
@@ -127,15 +152,12 @@ var loadEditModal = function(){
 	var character = parentDiv.data('character');
 	var characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
 
-$('#edit-name').val(character.name);
-$('#edit-gender').val(character.gender);
-$('#edit-class').val(character.classType);
-$('#edit-level').val(character.level);
-$('#edit-money').val(character.money);
-
-	/*
-	alertUser() when returned that object created successfully
-	*/
+	$('#edit-name').val(character.name);
+	$('#edit-gender').val(character.gender);
+	$('#edit-class').val(character.classType);
+	$('#edit-level').val(character.level);
+	$('#edit-money').val(character.money);
+	
 	$('.submit-edits').click(
 		function(){
 			editCharacter(character,parentDiv);
@@ -147,17 +169,25 @@ $('#edit-money').val(character.money);
 }
 
 var deleteCharacter = function(){
+	$('.feedback').removeClass('animated fadeOut');
+	$('.feedback').text('Deleting Character...');
+	var characterRow = $(this).parent().parent();
 	var character = $(this).parent().parent().data('character');
 	var characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
-
 		$.ajax({
 	    type: 'DELETE',
 	    url: characterURL,
 	    success: function (data, textStatus, jqXHR) {
-	        console.log("Gone baby gone.");
+	        alertUser({
+	        	alertType: 'danger',
+	        	action: 'Character Deleted: ' + character.name
+	        })
+	       characterRow.remove();
+	       $('.feedback').addClass('animated fadeOut');
 	    }
 	});
-		$(this).parent().parent().remove();
+		
+		
 }
 var createSuccessDiv = function(character){
 	 var newRow = $('.tblRowTemplate').clone();
@@ -170,32 +200,36 @@ var createSuccessDiv = function(character){
 			newRow.find('.delete-btn').click(deleteCharacter);
       newRow.show();
       newRow.data('character', character);
+
+      if (character.gender === 'MALE') {
+						newRow.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
+					}else{
+						  newRow.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
+					}
+
       newRow.addClass('success');
       $(".contentArea").animate({ scrollTop: 0 }, 500);
       $('tbody').prepend(newRow);
-      newRow.removeClass('tblRowTemplate').addClass('tbl-row');
+      newRow.removeClass('tblRowTemplate').addClass('tblRow');
       setTimeout(function(){
-      newRow.removeClass('success')
+      newRow.removeClass('success');
     	}, 5000)
-}
 
-var  validateAddInputs = function(){
-	name = $('#addCharacterName').val();
-	classType = $('#addCharacterClass').val();
-	gender = $('#addCharacterGender').val();
-	level = parseInt($('#addCharacterLevel').val());
-	money = parseInt($('addCharacterMoney').val());
 }
 
 var addCharacter = function(){
+	$('.add-cancel').click();
+	$('.feedback').removeClass('animated fadeOut');
 	$('.feedback').text('Adding Character...');
-	var character = {
-	name: $('#addCharacterName').val(),
-	classType : $('#addCharacterClass').val(),
-	gender : $('#addCharacterGender').val(),
-	level : parseInt($('#addCharacterLevel').val()),
-	money : parseInt($('addCharacterMoney').val())
-	}
+
+		character = {
+		name: $('#addCharacterName').val(),
+		classType : $('#addCharacterClass').val(),
+		gender : $('#addCharacterGender').val(),
+		level : parseInt($('#addCharacterLevel').val()),
+		money : parseInt($('#addCharacterMoney').val()),
+		id: $('#addCharacterId').val()
+		}
 
 	$.ajax({
 	    type: 'POST',
@@ -211,23 +245,44 @@ var addCharacter = function(){
 	    dataType: "json",
 	    accept: "application/json",
 	    complete: function (jqXHR, textStatus) {
-	        createSuccessDiv(character)
+	        createSuccessDiv(character);
 	        alertUser({
-	        	action: "added",
-	        	character: name
+	        	action: 'Character Added: ' + character.name,
+	        	character: character,
+	        	alertType:'success'
 	        })
+	       $('.feedback').addClass('animated fadeOut');
+
 	    }
 	});
-	$('.feedback').addClass('animated fadeOut');
+	
 }
 
 var alertUser = function(notification){
-	alertBar = $('#alertBar').clone().addClass("alert-" + notification.alertType)
+	$('.notificationBar').remove();
+	alertBar = $('#alertBar').clone().addClass("alert-" + notification.alertType).addClass('notificationBar');
 	$('#alertRow').append(alertBar);
 	alertBar.show();
 
 	$('.alertMessage').text(notification.action);
+}
 
+var showItemModal = function(){
+
+}
+
+var createRandomItem = function(){
+	$.getJSON(
+    "http://lmu-diabolical.appspot.com/items/spawn",
+    {
+        level: 50,
+        slot: "body"
+    },
+    function (item) {
+        // Mmmmm, new item.
+        console.log(item);
+    }
+);
 }
 
 var getCharacterId = function(characterName){
@@ -235,8 +290,11 @@ var getCharacterId = function(characterName){
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
       // Do something with the character list.
-      characters.map(function (character) {
-       return this.characterName = characterName});
+      for(var i = 0; i < characters.length; i++){
+      	if (characters[i].name == characterName) {
+      		return characters[i].id;
+      	};
+      }
     }
 	);
 }
@@ -284,6 +342,7 @@ var hideLoginModal = function(){
 	};
 }
 
+
 setContentHeight();
 displayCharacters();
 $(document).ready(checkIfUserLoggedIn());
@@ -295,8 +354,5 @@ $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
-$('#createNewCharacterBtn').click(function(){
-$('.add-cancel').click();
-
-})
+$('.spawnCharacter').click(spawnRandomCharacter)
 })
