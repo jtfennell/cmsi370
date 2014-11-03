@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Diabolical</title>
+    <title>DA RPG</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/rpg.css">
@@ -68,13 +68,13 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
-      <div class = "row">
+      <div class = "row" id = 'alertRow'>
         <div class="col-md-3 title-row" >
           <h1 class ="animated bounceInLeft pageTitle">DA RPG</h1>
         </div>
-        <div id = "alertBar" class="col-md-6 alert alert-warning alert-dismissible animated fadeInDown fade in" role="alert" hidden>
-          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <strong id = "alertMessage">
+        <div id = "alertBar" class="col-md-6 alert alert-dismissible animated fadeInDown fade in" role="alert" hidden>
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span id = "alertClose" class="sr-only">Close</span></button>
+          <strong class = "alertMessage">
           </strong> 
           <button class = "btn btn-link alert-link">View</button>
           <button class="btn btn-link alert-link">Undo</button>
@@ -91,16 +91,20 @@
             <!-- Table -->
             <table class="main-table table table-hover">
               <thead>
+                <th></th>
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Class</th>
                 <th>Level</th>
                 <th>Money</th>
-                <th>Edit<th>
-                <th>Delete<th>
+                <th>Edit</th>
+                <th>Delete</th>
               </thead>
               <tbody id = "tbl-body">
                   <tr class = "tblRowTemplate" hidden>
+                    <td>
+                      <img class = 'img img-circle char-pic'>
+                    </td>
                     <td class = "char-name"></td>
                     <td class = "char-gender"></td>
                     <td class = "char-class"></td>
@@ -117,7 +121,7 @@
             </table>
         </div>
       </div>
-       <div class = "row" >
+      <div class = "row" >
         <div class = "col-md-2 button-wrapper col-md-offset-2">
           <button id = "refreshCharListBtn" class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-th-list" ></span> Refresh Character List
@@ -128,113 +132,112 @@
           <span class="glyphicon glyphicon-plus"></span> Add New Character
           </button>
         </div>
-        <div class = "col-md-2 button-wrapper">
+        <div class = "spawnCharacter col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-user"></span> Spawn Random Character
           </button>
         </div>
         <div class = "col-md-2 button-wrapper">
-          <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
+          <button class = "animated bounceInUp btn-block btn-primary action-button center-block" data-toggle="modal" data-target="#itemModal">
              <span class="glyphicon glyphicon-cutlery"></span> Generate Random Item
           </button>
         </div>
       </div>
-      <div class = "row">
-              <!-- Modal -->
-        <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" id = "closeModal" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Log In</h4>
-              </div>
-              <div class="modal-body">
-                <form role="form">
-                  <div class="form-group">
-                    <label for="userNameInput">User Name</label>
-                    <input type="email" class="form-control" id="userNameInput" placeholder="Enter username">
-                  </div>
-                  <div class="form-group">
-                    <label for="passwordInput">Password</label>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-                  </div>
-              </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id = "submitLogInBtn"type="button" class="btn btn-primary">Log in</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class = "row">
-        <!-- Modal -->
-        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                <form role="form">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-              </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class=" btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id = "edit-modal">
+      <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title">Modify Character</h4>
+              <button type="button" id = "closeModal" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Log In</h4>
             </div>
             <div class="modal-body">
               <form role="form">
                 <div class="form-group">
-                  <label for="edit-name">Name</label>
-                  <input type="text" class="form-control" id="edit-name" placeholder="Enter name">
+                  <label for="userNameInput">User Name</label>
+                  <input type="email" class="form-control" id="userNameInput" placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                  <label for="edit-gender">Password</label>
-                  <select name="select" class="form-control" id="edit-gender" placeholder="select one">
-                    <option value="MALE" selected>Male</option>
-                    <option value="FEMALE">Female</option>
-                  </select>
+                  <label for="passwordInput">Password</label>
+                  <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button id = "submitLogInBtn"type="button" class="btn btn-primary">Log in</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                  <label for="edit-class">Class</label>
-                  <input type="text" class="form-control" id="edit-class" placeholder="Enter name">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                 </div>
-                 <div class="form-group">
-                  <label for="edit-money">Money</label>
-                  <input type="text" class="form-control" id="edit-money" placeholder="Enter money">
-                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class=" edit-close btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="submit-edits btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class=" btn btn-primary">Save changes</button>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+          </div>
+        </div>
+      </div>
+      </div>
+        <div class="modal fade" id = "edit-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Modify Character</h4>
+              </div>
+              <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="edit-name">Name</label>
+                    <input type="text" class="form-control" id="edit-name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-gender">Password</label>
+                    <select name="select" class="form-control" id="edit-gender" placeholder="select one">
+                      <option value="MALE" selected>Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-class">Class</label>
+                    <input type="text" class="form-control" id="edit-class" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-money">Money</label>
+                    <input type="text" class="form-control" id="edit-money" placeholder="Enter money">
+                  </div>
+                  <div class="form-group">
+                    <label for="edit-money">Level</label>
+                    <input type="text" class="form-control" id="edit-level" placeholder="Enter level">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class=" edit-close btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="submit-edits btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
       <div class="modal fade" id="addCharacterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -249,8 +252,8 @@
                 <input type="text" class="form-control" id="addCharacterName" placeholder="Enter Name">
               </div>
               <select name="select" class= " form-group input-group input-group-lg form-control" id="addCharacterGender" placeholder="select one">
-                    <option value="MALE" selected>Male</option>
-                    <option value="FEMALE">Female</option>
+                <option value="MALE" selected>Male</option>
+                <option value="FEMALE">Female</option>
               </select>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterClass">Class Type </label>
@@ -263,17 +266,48 @@
               <label for="form-group input-group addCharacterMoney">Money</label>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon">$</span>
-                <input type="number" min = "0" id="addCharacterMoney" class = "form-control" placeholder = "Enter amount of money">
+                <input type="number" id="addCharacterMoney" class = "form-control" placeholder = "Enter amount of money">
+              </div>
+              <div class="form-group input-group input-group-lg" >
+                <label for="addCharacterId"> </label>
+                <input type="text" class="form-control" id="addCharacterId" placeholder="Enter Class Type">
               </div>
             </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="add-cancel btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id = "createNewCharacterBtn">Create Character</button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="add-cancel btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" id = "createNewCharacterBtn">Create Character</button>
       </div>
     </div>
   </div>
-</div>
+  <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Generate Random Item</h4>
+          <p>Enter a body part for the new item and the level a which the character unlocks the body part, and a random item will be generated.</p>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="itemBodyPart">Body Part</label>
+              <input type="email" class="form-control" id="itemBodyPart" placeholder="Enter body part">
+            </div>
+            <div class="form-group">
+              <label for="itemUnlockLevel">Unlock Level</label>
+              <input type="password" class="form-control" id="itemUnlockLevel" placeholder="Enter Level">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
