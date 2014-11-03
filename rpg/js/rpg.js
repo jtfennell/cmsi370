@@ -114,7 +114,9 @@ var editCharacter = function(character, parentDiv){
         parentDiv.remove();
         createSuccessDiv(character);
         alertUser(
-        	{action: "Character Modified: " + character.name}
+        	{action: "Character Modified: " + character.name,
+        	alertType: 'success'
+        	}
         )
     }
 		});
@@ -220,9 +222,11 @@ var addCharacter = function(){
 }
 
 var alertUser = function(notification){
-	$('#alertBar').show();
+	alertBar = $('#alertBar').clone().addClass("alert-" + notification.alertType)
+	$('#alertRow').append(alertBar);
+	alertBar.show();
 
-	$('#alertMessage').text(notification.action);
+	$('.alertMessage').text(notification.action);
 
 }
 
@@ -292,6 +296,7 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 $('#createNewCharacterBtn').click(function(){
-	$('.add-cancel').click();
+$('.add-cancel').click();
+
 })
 })
