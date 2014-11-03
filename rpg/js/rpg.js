@@ -116,13 +116,14 @@ var displayCharacters = function(){
 
 var editCharacter = function(character, parentDiv){
 	characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
-		character.name = $('#edit-name').val();
-		character.gender = $('#edit-gender').val();
-		character.classType = $('#edit-class').val();
-		character.level = parseInt($('#edit-level').val());
-		character.money = parseInt($('#edit-money').val());
+	
+	character.name = $('#edit-name').val();
+	character.gender = $('#edit-gender').val();
+	character.classType = $('#edit-class').val();
+	character.level = parseInt($('#edit-level').val());
+	character.money = parseInt($('#edit-money').val());
 
-		$.ajax({
+	$.ajax({
     type: 'PUT',
     url: characterURL,
     data: JSON.stringify({
@@ -141,7 +142,9 @@ var editCharacter = function(character, parentDiv){
         createSuccessDiv(character);
 	        alertUser(
 	        	{action: "Character Modified: " + character.name,
-	        	alertType: 'warning'
+	        	alertType: 'warning',
+	        	character:character,
+	        	item: null
 	        	}
 	        )
     	}
