@@ -98,6 +98,7 @@ var displayCharacters = function(){
 			tr.data('character', character);
 			tr.find('.edit-btn').click(loadEditModal);
 			tr.find('.delete-btn').click(deleteCharacter);
+			tr.find('.viewCharArea').click(function(){viewCharacter(character)})
 
 			if (character.gender === 'MALE') {
 				tr.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
@@ -106,7 +107,7 @@ var displayCharacters = function(){
 			}
 			tr.show();
 			return tr;
-	      }));
+	      	}));
 	    }
 	);
 	$('.feedback').text('All characters loaded');
@@ -190,30 +191,30 @@ var deleteCharacter = function(){
 		
 }
 var createSuccessDiv = function(character){
-	 var newRow = $('.tblRowTemplate').clone();
-      newRow.find('.char-name').text(character.name);
-      newRow.find('.char-gender').text(character.gender);
-      newRow.find('.char-class').text(character.classType);
-      newRow.find('.char-level').text(character.level);
-      newRow.find('.char-money').text(character.money);
-      newRow.find('.edit-btn').click(loadEditModal);
-			newRow.find('.delete-btn').click(deleteCharacter);
-      newRow.show();
-      newRow.data('character', character);
+	var newRow = $('.tblRowTemplate').clone();
+    newRow.find('.char-name').text(character.name);
+    newRow.find('.char-gender').text(character.gender);
+    newRow.find('.char-class').text(character.classType);
+    newRow.find('.char-level').text(character.level);
+    newRow.find('.char-money').text(character.money);
+    newRow.find('.edit-btn').click(loadEditModal);
+	newRow.find('.delete-btn').click(deleteCharacter);
+    newRow.show();
+    newRow.data('character', character);
 
-      if (character.gender === 'MALE') {
-						newRow.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
-					}else{
-						  newRow.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
-					}
+    if (character.gender === 'MALE') {
+		newRow.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
+	}else{
+		newRow.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
+	}
 
-      newRow.addClass('success');
-      $(".contentArea").animate({ scrollTop: 0 }, 500);
-      $('tbody').prepend(newRow);
-      newRow.removeClass('tblRowTemplate').addClass('tblRow');
-      setTimeout(function(){
-      newRow.removeClass('success');
-    	}, 5000)
+    newRow.addClass('success');
+    $(".contentArea").animate({ scrollTop: 0 }, 500);
+    $('tbody').prepend(newRow);
+    newRow.removeClass('tblRowTemplate').addClass('tblRow');
+    setTimeout(function(){
+    newRow.removeClass('success');
+   	}, 5000)
 
 }
 
@@ -257,6 +258,32 @@ var addCharacter = function(){
 	});
 	
 }
+var viewCharacter = function(character){
+	$('#viewCharModal').modal('toggle');
+
+	$('.charName').text(character.name);
+	$('.charGender').text(character.gender);
+	$('.charLevel').text(character.level);
+	$('.charClass').text(character.classType);
+	$('.charMoney').text(character.money);
+
+	if (character.gender === 'MALE') {
+		$('.charPic').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
+	}else{
+		$('.charPic').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
+	}
+
+
+}
+
+var viewNotification = function(notification){
+
+	if (notification.character === null) {
+		alert('this is an item')
+	}else{
+		viewCharacter(notification.character);
+	}
+}
 
 var alertUser = function(notification){
 	$('.notificationBar').remove();
@@ -265,6 +292,10 @@ var alertUser = function(notification){
 	alertBar.show();
 
 	$('.alertMessage').text(notification.action);
+	$('.viewNotification').click(
+		function(){
+			viewNotification(notification)
+		})
 }
 
 var showItemModal = function(){
@@ -272,16 +303,28 @@ var showItemModal = function(){
 }
 
 var createRandomItem = function(){
+	$('.feedback').removeClass('animated fadeOut')
+	$('.feedback').text("Generating Item...")
+	$('#itemCloseBtn').click();
+	var itemBodyPart = $('#itemBodyPart').val();
+	var itemUnlockLevel = $('#itemUnlockLevel').val();
+
 	$.getJSON(
     "http://lmu-diabolical.appspot.com/items/spawn",
     {
-        level: 50,
-        slot: "body"
+        level: itemUnlockLevel,
+        slot: itemBodyPart
     },
     function (item) {
-        // Mmmmm, new item.
-        console.log(item);
+        alertUser({
+    	alertType: 'success',
+    	action: 'Item generated: ' + item.name,
+    	character:null,
+    	item:item
+    })
+        $('.feedback').addClass('animated fadeOut')
     }
+
 );
 }
 
@@ -355,4 +398,6 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
+$('#genItemBtn').click(createRandomItem);
+
 })
