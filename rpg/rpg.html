@@ -76,7 +76,7 @@
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span id = "alertClose" class="sr-only">Close</span></button>
           <strong class = "alertMessage">
           </strong> 
-          <button class = "btn btn-link alert-link">View</button>
+          <button class = "viewNotification btn btn-link alert-link">View</button>
           <button class="btn btn-link alert-link">Undo</button>
         </div>
         <div class = "col-md-4"></div>
@@ -102,14 +102,14 @@
               </thead>
               <tbody id = "tbl-body">
                   <tr class = "tblRowTemplate" hidden>
-                    <td>
-                      <img class = 'img img-circle char-pic'>
-                    </td>
-                    <td class = "char-name"></td>
-                    <td class = "char-gender"></td>
-                    <td class = "char-class"></td>
-                    <td class = "char-level"></td>
-                    <td class = "char-money"></td>
+                      <td>
+                        <img class = 'img img-circle char-pic'>
+                      </td>
+                      <td class = "char-name viewCharArea"></td>
+                      <td class = "char-gender viewCharArea"></td>
+                      <td class = "char-class viewCharArea"></td>
+                      <td class = "char-level viewCharArea"></td>
+                      <td class = "char-money viewCharArea"></td>
                     <td>
                       <button data-toggle="modal" data-target="#edit-modal" class = 'btn btn-info edit-btn'>Edit</button>
                     </td>
@@ -288,29 +288,62 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4 class="modal-title" id="myModalLabel">Generate Random Item</h4>
-          <p>Enter a body part for the new item and the level a which the character unlocks the body part, and a random item will be generated.</p>
+          <p>Select a body part and unlock level and a new item will be generated.</p>
         </div>
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
-              <select>
+              <label for="itemBodyPart">Unlock Level</label>
+              <select id = "itemBodyPart" >
                 <option val = 'head'>Head</option>
-                <option val = 'body'>Head</option>
+                <option val = 'body'>Body</option>
               </select>
             </div>
             <div class="form-group">
               <label for="itemUnlockLevel">Unlock Level</label>
-              <input type="password" class="form-control" id="itemUnlockLevel" placeholder="Enter Level">
+              <input type="text" class="form-control" id="itemUnlockLevel" placeholder="Enter Level">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button id = "itemCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id = "genItemBtn" type="button" class="btn btn-primary">Generate Item</button>
         </div>
       </div>
     </div>
   </div>
+  <div class="modal fade" id = "viewCharModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title charName">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <img class = "charPic img img-circle" src="">
+        <p>
+          <strong class = "charItem"> Gender:</strong>
+          <span class = 'charGender'></span>
+        </p>
+        <p>
+          <strong class = "charItem">Level:</strong>
+          <span class = "charLevel"></span>
+        </p>
+        <p>
+          <strong class = "charItems">Class:</strong>
+          <span class = "charClass"></span>
+        </p>
+        <p>
+          <strong class = "charItem">Money:</strong>
+          <span class = "charMoney"></span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal --
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
