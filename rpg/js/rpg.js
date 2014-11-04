@@ -106,12 +106,13 @@ var displayCharacters = function(){
 				tr.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
 			}
 			tr.show();
+			$('.feedback').text('All characters loaded');
+			setTimeout(function(){$('.feedback').addClass('animated fadeOut')}, 3000);
 			return tr;
 	      	}));
 	    }
 	);
-	$('.feedback').text('All characters loaded');
-	setTimeout(function(){$('.feedback').addClass('animated fadeOut')}, 3000);
+	
 }
 
 var editCharacter = function(character, parentDiv){
@@ -144,7 +145,8 @@ var editCharacter = function(character, parentDiv){
 	        	{action: "Character Modified: " + character.name,
 	        	alertType: 'warning',
 	        	character:character,
-	        	item: null
+	        	item: null,
+	        	undo:'delete'
 	        	}
 	        )
     	}
@@ -184,7 +186,9 @@ var deleteCharacter = function(){
 	    success: function (data, textStatus, jqXHR) {
 	        alertUser({
 	        	alertType: 'danger',
-	        	action: 'Character Deleted: ' + character.name
+	        	action: 'Character Deleted: ' + character.name,
+	        	character:character,
+	        	undo:'add'
 	        })
 	       characterRow.remove();
 	       $('.feedback').addClass('animated fadeOut');
@@ -253,7 +257,9 @@ var addCharacter = function(){
 	        alertUser({
 	        	action: 'Character Added: ' + character.name,
 	        	character: character,
-	        	alertType:'success'
+	        	alertType:'success',
+	        	undo : null,
+	        	item : null
 	        })
 	       $('.feedback').addClass('animated fadeOut');
 
@@ -280,7 +286,6 @@ var viewCharacter = function(character){
 }
 
 var viewNotification = function(notification){
-
 	if (notification.character === null) {
 		alert('this is an item')
 	}else{
@@ -289,19 +294,23 @@ var viewNotification = function(notification){
 }
 
 var alertUser = function(notification){
+	$('.undo-btn').show();
 	$('.notificationBar').remove();
 	alertBar = $('#alertBar').clone().addClass("alert-" + notification.alertType).addClass('notificationBar');
 	$('#alertRow').append(alertBar);
 	alertBar.show();
 
+	if (notification.undo !== 'add') {
+		$('.undo-btn').hide();
+	};
 	$('.alertMessage').text(notification.action);
 	$('.viewNotification').click(
 		function(){
 			viewNotification(notification)
 		})
-}
 
-var showItemModal = function(){
+	$('.undo-btn').click(
+		function(){undoDelete(notification.character)})
 
 }
 
@@ -388,6 +397,21 @@ var hideLoginModal = function(){
 	};
 }
 
+var undoDelete = function(character){
+	
+		$('#addCharacterName').val(character.name),
+		$('#addCharacterClass').val(character.classType)
+		$('#addCharacterGender').val(character.gender)
+		$('#addCharacterLevel').val(character.level)
+		$('#addCharacterMoney').val(character.money)
+		addCharacter();
+
+		$('#addCharacterName').val('');
+		$('#addCharacterClass').val('');
+		$('#addCharacterGender').val('');
+		$('#addCharacterLevel').val('');
+		$('#addCharacterMoney').val('');
+}
 
 setContentHeight();
 displayCharacters();
@@ -402,5 +426,6 @@ $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
 $('#genItemBtn').click(createRandomItem);
+
 
 })
