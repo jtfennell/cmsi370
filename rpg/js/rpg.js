@@ -60,6 +60,55 @@ var spawnRandomCharacter = function(){
 
 }
 
+var showHelp = function(){
+	$('.alertRow').append('<button></button>').text('Next');
+	$("#refreshCharListBtn").addClass('show');
+	$('.tblRow').fadeTo(500, .5).css('background-color', 'grey');
+	$('nav').fadeTo(500, .2);
+	$('.pageTitle').addClass('darkened');
+	
+	
+	var alertBar = $('#alertBar').clone().addClass("alert-info");
+	alertBar.find('button').remove();
+	var alertText = $('<p></p>')
+	var nextButton = $('<button></button>').text('Next').addClass('btn btn-info');
+	alertBar.append(alertText);
+	alertBar.append(nextButton);
+	$('#alertRow').append(alertBar);
+	alertBar.show();
+	$('.button-wrapper').fadeTo(500, .2);
+
+	$('.tblRow').first().fadeTo(500,1).css('background-color', 'white');
+	alertBar.text('Each character is displayed in a row with its respective attributes');
+
+	var index = 0;
+	var elementIds = ["refreshCharListBtn", "addCharBtn", "spawnCharBtn", "genItemBtn"]
+	
+	var buttonDescriptions = [
+	"Updates the list of characters with all of the current characters in the game",
+	"Opens a prompt and uses user-generated attributes to create a new character in the game",
+	"Spawns a character with all attributes randomly generated",
+	"Generates a new random item"
+	]
+	/*
+	alertText.text(buttonDescriptions[index]);
+	$("#" + elementIds[index]).fadeTo(500,1);
+	nextButton.click(function(){
+		index++;
+		if (index > 0) {
+			$("#" + elementIds[index - 1]).fadeTo(500,.2);
+		};
+		$("#" + elementIds[index]).fadeTo(500,1);
+		alertText.text(buttonDescriptions[index]);
+
+		if (index === elementIds.length - 1) {
+			nextButton.text('done');
+		};
+	})
+*/
+	
+}
+
 var getCharacter = function(){
 	var characterName = $searchBar.val();
 	
@@ -269,7 +318,6 @@ var addCharacter = function(){
 }
 var viewCharacter = function(character){
 	$('#viewCharModal').modal('toggle');
-
 	$('.charName').text(character.name);
 	$('.charGender').text(character.gender);
 	$('.charLevel').text(character.level);
@@ -281,8 +329,6 @@ var viewCharacter = function(character){
 	}else{
 		$('.charPic').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
 	}
-
-
 }
 
 var viewNotification = function(notification){
@@ -426,6 +472,5 @@ $createNewCharacterBtn.click(addCharacter);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
 $('#genItemBtn').click(createRandomItem);
-
-
+$("#helpButton").click(showHelp);
 })
