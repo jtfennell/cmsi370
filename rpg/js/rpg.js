@@ -376,7 +376,19 @@ var viewCharacter = function(character){
 }
 
 var checkGenItemInputs = function(){
+	var unlockLevel = parseInt($('#itemUnlockLevel').val());
+	var seenErrors = false;
 
+	if (!isNumeric(unlockLevel)) {
+		$('.itemLevelError').show();
+		seenErrors = true;
+	};
+
+	if (!seenErrors) {
+		createRandomItem();
+		$('#itemUnlockLevel').val('')
+		$('.itemLevelError').hide();
+	};
 }
 
 var viewNotification = function(notification){
@@ -429,7 +441,6 @@ var createRandomItem = function(){
 	var item ={bodyPart: $('#itemBodyPart').val(),
 		unlockLevel: parseInt($('#itemUnlockLevel').val()),
 	}
-	alert(item.bodyPart)
 
 	$('#itemCloseBtn').click();
 
@@ -601,7 +612,7 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(checkAddInputs);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
-$('.genItemBtn').click(createRandomItem);
+$('.genItemBtn').click(checkGenItemInputs);
 $("#helpButton").click(showHelp);
 $('#searchBar').tooltip()
 $('#addCharacterName').popover('show');
