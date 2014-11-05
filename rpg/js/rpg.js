@@ -61,52 +61,97 @@ var spawnRandomCharacter = function(){
 }
 
 var showHelp = function(){
+	var refreshCharListBtn = $('#refreshCharListBtn');
+	var addCharBtn = $('#addCharBtn');
+	var spawnCharBtn = $('#spawnCharBtn');
+	var genItemBtn = $('#genItemBtn');
+	var firstRow = $('.tblRow').first();
+	var firstRowEditButton = firstRow.find('.edit-btn');
+	var firstRowDelBtn = firstRow.find('.delete-btn');
+
+	$('.notification').remove();
 	$('.alertRow').append('<button></button>').text('Next');
 	$("#refreshCharListBtn").addClass('show');
 	$('.tblRow').fadeTo(500, .5).css('background-color', 'grey');
 	$('nav').fadeTo(500, .2);
 	$('.pageTitle').addClass('darkened');
-	
-	
-	var alertBar = $('#alertBar').clone().addClass("alert-info");
+
+	var alertBar = $('#alertBar').clone().addClass("help notification alert-info");
 	alertBar.find('button').remove();
 	var alertText = $('<p></p>')
 	var nextButton = $('<button></button>').text('Next').addClass('btn btn-info');
 	alertBar.append(alertText);
 	alertBar.append(nextButton);
 	$('#alertRow').append(alertBar);
+	alertBar.css('margin-bottom', '0px');
+	alertBar.css('padding-bottom', '11px');
+	alertBar.addClass('animated rotateIn');
 	alertBar.show();
 	$('.button-wrapper').fadeTo(500, .2);
 
 	$('.tblRow').first().fadeTo(500,1).css('background-color', 'white');
-	alertBar.text('Each character is displayed in a row with its respective attributes');
+	alertText.text('');
 
 	var index = 0;
-	var elementIds = ["refreshCharListBtn", "addCharBtn", "spawnCharBtn", "genItemBtn"]
-	
-	var buttonDescriptions = [
-	"Updates the list of characters with all of the current characters in the game",
-	"Opens a prompt and uses user-generated attributes to create a new character in the game",
-	"Spawns a character with all attributes randomly generated",
-	"Generates a new random item"
+	var focusElements = [
+		firstRow, firstRowEditButton, firstRowDelBtn, refreshCharListBtn, addCharBtn, spawnCharBtn, genItemBtn
 	]
-	/*
-	alertText.text(buttonDescriptions[index]);
-	$("#" + elementIds[index]).fadeTo(500,1);
+
+	var elementDescriptions = [
+	"Each character is displayed in a row with its respective attributes. Click a row to view the character's character card",
+	"Click on the character's edit button to edit the attributes of the character",
+	"To remove a character from the game, click the character's delete button",
+	"To update the list of characters with all of the current characters in the game, click \"Refresh Character List \"",
+	"To create your own character for the game with your own desired attributes, click the \"add new character\" button",
+	"Spawns a character with all attributes randomly generated",
+	"Generates a new random item to be used in the game"
+	]
+	
+	alertText.text(elementDescriptions[index]);
 	nextButton.click(function(){
 		index++;
-		if (index > 0) {
-			$("#" + elementIds[index - 1]).fadeTo(500,.2);
+		if (index > 0 && index !== 1) {
+			focusElements[index - 1].fadeTo(500,.2);
+		}
+		else if (index === 1) {
+			firstRow.css('background-color', 'grey');
+			firstRowDelBtn.fadeTo(500, .5);
 		};
-		$("#" + elementIds[index]).fadeTo(500,1);
-		alertText.text(buttonDescriptions[index]);
+		if (index > 2) {
+			$('.tblRow').fadeTo(500, .5).css('background-color', 'grey');
+		};
+		focusElements[index].fadeTo(500,1);
+		focusElements[index].find('.btn').addClass('glow')
+		alertText.text(elementDescriptions[index]);
 
-		if (index === elementIds.length - 1) {
-			nextButton.text('done');
+		if (index === focusElements.length - 1) {
+			nextButton.remove();
+			var closeButton = $('<button></button>').addClass('btn btn-info').text('close');
+			alertBar.append(closeButton);
+
+			closeButton.click(
+				function(){
+					closeHelp(focusElements)
+				}
+			)
 		};
 	})
-*/
 	
+}
+
+var closeHelp = function(elementsToShow){
+	$('.help').addClass('animated zoomOut')
+	setTimeout(function(){
+		$('.help').remove()
+	}, 3000)
+
+	for (var i = 0; i < elementsToShow.length; i++){
+		elementsToShow[i].fadeTo(500, 1)
+	}
+
+	$('.tblRow').fadeTo(500, 1).css('background-color', 'white');
+	$('nav').fadeTo(500, 1);
+	$('.pageTitle').removeClass('darkened');
 }
 
 var getCharacter = function(){
@@ -340,16 +385,17 @@ var viewNotification = function(notification){
 }
 
 var alertUser = function(notification){
+	$('.notification').remove();
 	$('.undo-btn').show();
 	$('.notificationBar').remove();
-	alertBar = $('#alertBar').clone().addClass("alert-" + notification.alertType).addClass('notificationBar');
+	var alertBar = $('#alertBar').clone().addClass("notification alert-" + notification.alertType).addClass('notificationBar');
 	$('#alertRow').append(alertBar);
 	alertBar.show();
 
 	if (notification.undo !== 'add') {
 		$('.undo-btn').hide();
 	};
-	$('.alertMessage').text(notification.action);
+	alertBar.find('.alertMessage').text(notification.action);
 	$('.viewNotification').click(
 		function(){
 			viewNotification(notification)
