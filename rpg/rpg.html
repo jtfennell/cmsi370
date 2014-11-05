@@ -319,7 +319,7 @@
         </div>
         <div class="modal-footer">
           <button id = "itemCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id = "genItemBtn" type="button" class="btn btn-primary">Generate Item</button>
+          <button id = "genItemBtn" type="button" class="btn btn-primary genItemBtn">Generate Item</button>
         </div>
       </div>
     </div>
@@ -353,9 +353,61 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+    </div>
+  </div>
+</div>
+<div id = "viewItemModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title itemName"></h4>
+      </div>
+      <div class="modal-body">
+        <p >
+          <strong >Slot:</strong>
+          <span id = "slot"></span>
+        </p>
+        <p>
+          <strong >Unlock Level:</strong>
+           <span id = "level"></span>
+        </p>
+        <p>
+          <strong >Absorption: </strong>
+           <span id = "absorption"></span>
+        </p>
+        <p>
+          <strong >Attack Speed: </strong>
+           <span id = "atkspeed"></span>
+        </p>
+        <p>
+          <strong >Block Chance: </strong>
+           <span id = "blockchance"></span>
+        </p>
+        <p>
+          <strong >Critical Hit Chance: </strong>
+           <span id = "critchance"></span>
+        </p>
+        <p>
+          <strong >Defense</strong>
+           <span id = "defense"></span>
+        </p>
+        <p>
+          <strong >Maximum Damage</strong>
+           <span id = "maxdamage"></span>
+        </p>
+        <p>
+          <strong >Minimum Damage</strong>
+           <span id = "mindamage"></span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal --
+</div><!-- /.modal -->
        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

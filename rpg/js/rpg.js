@@ -375,9 +375,26 @@ var viewCharacter = function(character){
 	}
 }
 
+var checkGenItemInputs = function(){
+
+}
+
 var viewNotification = function(notification){
 	if (notification.character === null) {
-		alert('this is an item')
+		item = notification.item;
+		console.log(notification.item)
+		$(".itemName").text(item.name);
+		$("#slot").text(item.slot);
+		$('#level').text(item.level);
+		$('#absorption').text(item.absorption);
+		$('#atkspeed').text(item.atkspeed);
+		$('#blockchance').text(item.blockchance);
+		$('#critchance').text(item.critchance);
+		$('#defense').text(item.defense);
+		$('#maxdamage').text(item.maxdamage);
+		$('#mindamage').text(item.mindamage);
+
+		$('#viewItemModal').modal();
 	}else{
 		viewCharacter(notification.character);
 	}
@@ -408,15 +425,19 @@ var alertUser = function(notification){
 var createRandomItem = function(){
 	$('.feedback').removeClass('animated fadeOut')
 	$('.feedback').text("Generating Item...")
+	
+	var item ={bodyPart: $('#itemBodyPart').val(),
+		unlockLevel: parseInt($('#itemUnlockLevel').val()),
+	}
+	alert(item.bodyPart)
+
 	$('#itemCloseBtn').click();
-	var itemBodyPart = $('#itemBodyPart').val();
-	var itemUnlockLevel = $('#itemUnlockLevel').val();
 
 	$.getJSON(
     "http://lmu-diabolical.appspot.com/items/spawn",
     {
-        level: itemUnlockLevel,
-        slot: itemBodyPart
+        level: item.unlockLevel,
+        slot: item.bodyPart
     },
     function (item) {
         alertUser({
@@ -427,8 +448,7 @@ var createRandomItem = function(){
     })
         $('.feedback').addClass('animated fadeOut')
     }
-
-);
+	);
 }
 
 var getCharacterId = function(characterName){
@@ -581,7 +601,7 @@ $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(checkAddInputs);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
-$('#genItemBtn').click(createRandomItem);
+$('.genItemBtn').click(createRandomItem);
 $("#helpButton").click(showHelp);
 $('#searchBar').tooltip()
 $('#addCharacterName').popover('show');
