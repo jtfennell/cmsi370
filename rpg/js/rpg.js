@@ -564,9 +564,7 @@ var checkAddInputs = function(){
 		$('#addCharacterMoney').val('').parent().removeClass('has-error');
 		$('#addCharacterLevel').val('').parent().removeClass('has-error');
 		$('#addCharacterClass').val('').parent().removeClass('has-error');
-		$('#addCharacterName').val('').parent().removeClass('has-error');
-
-		
+		$('#addCharacterName').val('').parent().removeClass('has-error');	
 	};
 }
 
