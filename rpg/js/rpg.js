@@ -324,13 +324,12 @@ var addCharacter = function(){
 	$('.feedback').removeClass('animated fadeOut');
 	$('.feedback').text('Adding Character...');
 
-		character = {
+		var character = {
 		name: $('#addCharacterName').val(),
 		classType : $('#addCharacterClass').val(),
 		gender : $('#addCharacterGender').val(),
 		level : parseInt($('#addCharacterLevel').val()),
 		money : parseInt($('#addCharacterMoney').val()),
-		id: $('#addCharacterId').val()
 		}
 
 	$.ajax({
@@ -465,10 +464,6 @@ var fillInUserName = function(userName){
 	$('#userInfoLogin').addClass('user-greeting');
 }
 
-var checkAddInputs = function(){
-
-}
-
 var getUserName = function(){
 	var $userNameInput = $('#userNameInput');
 	var userName = $userNameInput.val();
@@ -495,19 +490,86 @@ var hideLoginModal = function(){
 
 var undoDelete = function(character){
 	
-		$('#addCharacterName').val(character.name),
-		$('#addCharacterClass').val(character.classType)
-		$('#addCharacterGender').val(character.gender)
-		$('#addCharacterLevel').val(character.level)
-		$('#addCharacterMoney').val(character.money)
-		addCharacter();
+	$('#addCharacterName').val(character.name),
+	$('#addCharacterClass').val(character.classType)
+	$('#addCharacterGender').val(character.gender)
+	$('#addCharacterLevel').val(character.level)
+	$('#addCharacterMoney').val(character.money)
+	addCharacter();
 
-		$('#addCharacterName').val('');
-		$('#addCharacterClass').val('');
-		$('#addCharacterGender').val('');
-		$('#addCharacterLevel').val('');
-		$('#addCharacterMoney').val('');
+	$('#addCharacterName').val('');
+	$('#addCharacterClass').val('');
+	$('#addCharacterGender').val('');
+	$('#addCharacterLevel').val('');
+	$('#addCharacterMoney').val('');
 }
+//function obtained from http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+var isNumeric = function(input){
+    return (input - 0) == input && (''+input).replace(/^\s+|\s+$/g, "").length > 0;
+}
+
+var checkAddInputs = function(){
+	var errorsInInputs = false;
+
+	var name = $('#addCharacterName').val()
+	var classType = $('#addCharacterClass').val()
+	var gender = $('#addCharacterGender').val()
+	var level = parseInt($('#addCharacterLevel').val())
+	var money = parseInt($('#addCharacterMoney').val())
+
+	if (name === '') {
+		errorsInInputs = true;
+		$('#addCharacterName').parent().addClass('has-error');
+		$('.nameError').show();
+	}
+	else{
+		$('.nameError').hide();
+	}
+
+	if (classType === '') {
+		errorsInInputs = true;
+		$('#addCharacterClass').parent().addClass('has-error');
+		$('.classError').show();
+	}
+	else{
+		$('.classError').hide();
+	}
+
+	if (!(isNumeric(level))) {
+		errorsInInputs = true;
+		$('#addCharacterLevel').parent().addClass('has-error');
+		$('.levelError').show();
+	}
+	else{
+		$('.levelError').hide();
+	}
+
+	if (!(isNumeric(money))) {
+		errorsInInputs = true;
+		$('#addCharacterMoney').parent().addClass('has-error');
+		$('.moneyError').show();
+	}
+	else{
+		$('.moneyError').hide();
+	}
+
+	if (errorsInInputs) {
+		$('.addErrors').show();
+	}
+	else if (!errorsInInputs) {
+		//removes any feedback about user errors on the add character modal
+		$('.addErrors').children().remove().hide();
+		addCharacter();
+		//clears the input warnings from the add character modal
+		$('#addCharacterMoney').val('').parent().removeClass('has-error');
+		$('#addCharacterLevel').val('').parent().removeClass('has-error');
+		$('#addCharacterClass').val('').parent().removeClass('has-error');
+		$('#addCharacterName').val('').parent().removeClass('has-error');
+
+		
+	};
+}
+
 
 setContentHeight();
 displayCharacters();
@@ -518,7 +580,7 @@ $searchDiv.mouseleave(closeSearchBar);
 $charSearchBtn.click(getCharacter);
 $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
-$createNewCharacterBtn.click(addCharacter);
+$createNewCharacterBtn.click(checkAddInputs);
 $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
 $('#genItemBtn').click(createRandomItem);
