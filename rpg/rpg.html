@@ -252,6 +252,13 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Add New Character</h4>
+              <div class = "addErrors" hidden>
+                <p>Please correct the following errors:</p>
+                <p class = "nameError" hidden>-Character Name: Name cannot be empty</p>
+                <p class = "classError" hidden>-Character Class: Class cannot be empty</p>
+                <p class = "levelError" hidden>-Character Level: Level cannot be empty, and must be a number</p>
+                <p class = "moneyError" hidden>-Character Money: Money cannot be empty, and must be a number</p>
+              </div>
              </div>
           <div class="modal-body">
             <form role="form">
