@@ -465,6 +465,10 @@ var fillInUserName = function(userName){
 	$('#userInfoLogin').addClass('user-greeting');
 }
 
+var checkAddInputs = function(){
+
+}
+
 var getUserName = function(){
 	var $userNameInput = $('#userNameInput');
 	var userName = $userNameInput.val();
@@ -519,4 +523,6 @@ $('#refreshCharListBtn').click(displayCharacters);
 $('.spawnCharacter').click(spawnRandomCharacter)
 $('#genItemBtn').click(createRandomItem);
 $("#helpButton").click(showHelp);
+$('#searchBar').tooltip()
+$('#addCharacterName').popover('show');
 })

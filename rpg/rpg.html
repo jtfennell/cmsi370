@@ -37,7 +37,7 @@
               </button>
               <form class="navbar-form navbar-left" role="search" id = "searchDiv" hidden = "true" >
               <div class="form-group">
-                <input type="text" class="form-control" placeholder = "Search for a character" id = "searchBar" >
+                <input data-toggle = "tooltip" data-placement = "bottom" title = "Note: functionality not implemented. Meant to showcase interface design implementation of anticipation" type="text" class="form-control" placeholder = "Search for a character" id = "searchBar" >
               </div>
               <button type="submit" id = "charSearchBtn" class="btn btn-primary btn-large">Search</button>
             </form>
@@ -60,7 +60,7 @@
                   <li><a href="#">Another action</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Help</a></li>
+                  <li><button id = "helpButton" class = 'btn btn-link btn-lg btn-block'>help</button></li>
                 </ul>
               </div>
           </ul>
@@ -77,7 +77,7 @@
           <strong class = "alertMessage">
           </strong> 
           <button class = "viewNotification btn btn-link alert-link">View</button>
-          <button class="btn btn-link alert-link">Undo</button>
+          <button class="undo-btn btn btn-link alert-link">Undo</button>
         </div>
         <div class = "col-md-4"></div>
       </div>
@@ -122,22 +122,22 @@
         </div>
       </div>
       <div class = "row" >
-        <div class = "col-md-2 button-wrapper col-md-offset-2">
-          <button id = "refreshCharListBtn" class = "animated bounceInUp btn-block btn-primary action-button center-block">
+        <div id = "refreshCharListBtn" class = "col-md-2 button-wrapper col-md-offset-2">
+            <button  class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-th-list" ></span> Refresh Character List
           </button>
         </div>
-        <div class = "col-md-2 button-wrapper">
-          <button class = "animated bounceInUp btn-block btn-primary action-button center-block" data-toggle="modal" data-target="#addCharacterModal">
+        <div id = "addCharBtn" class = "col-md-2 button-wrapper">
+          <button  class = "animated bounceInUp btn-block btn-primary action-button center-block" data-toggle="modal" data-target="#addCharacterModal">
           <span class="glyphicon glyphicon-plus"></span> Add New Character
           </button>
         </div>
-        <div class = "spawnCharacter col-md-2 button-wrapper">
+        <div id = "spawnCharBtn" class = "spawnCharacter col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block">
              <span class="glyphicon glyphicon-user"></span> Spawn Random Character
           </button>
         </div>
-        <div class = "col-md-2 button-wrapper">
+        <div id = "genItemBtn" class = "col-md-2 button-wrapper">
           <button class = "animated bounceInUp btn-block btn-primary action-button center-block" data-toggle="modal" data-target="#itemModal">
              <span class="glyphicon glyphicon-cutlery"></span> Generate Random Item
           </button>
@@ -149,6 +149,10 @@
             <div class="modal-header">
               <button type="button" id = "closeModal" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <h4 class="modal-title" id="myModalLabel">Log In</h4>
+              <p>
+                <strong>Note:</strong>
+                User authentication not implemented. Enter your username, and password anyways so we can remember your user name for next time
+              </p>
             </div>
             <div class="modal-body">
               <form role="form">
@@ -174,7 +178,11 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+              <p>
+                <strong>Note:</strong>
+                User authentication not implemented. Enter your email, and password anyways
+              </p>
             </div>
             <div class="modal-body">
               <form role="form">
@@ -251,26 +259,23 @@
                 <label for="addCharacterName">Character Name</label>
                 <input type="text" class="form-control" id="addCharacterName" placeholder="Enter Name">
               </div>
-              <select name="select" class= " form-group input-group input-group-lg form-control" id="addCharacterGender" placeholder="select one">
+              <label for "addCharacterGender">Gender</label>
+              <select name="select" class= "form-group input-group input-group-lg form-control" id="addCharacterGender" placeholder="select one">
                 <option value="MALE" selected>Male</option>
                 <option value="FEMALE">Female</option>
               </select>
               <div class="form-group input-group input-group-lg">
                 <label for="addCharacterClass">Class Type </label>
-                <input type="text" class="form-control" id="addCharacterClass" placeholder="Enter Class Type">
+                <input type="text" class="form-control" id="addCharacterClass" placeholder="Enter Class Type" data-toggle = "tooltip" data-placement = "right" title = "Please enter a class for your character">
               </div>
-              <div class="form-group input-group input-group-lg">
+              <div class=" input-group input-group-lg">
                 <label for="addCharacterLevel">Level</label>
                 <input  type="number" min = "0" id="addCharacterLevel" class = "form-control" placeholder = "Enter Character Level">
               </div>
-              <label for="form-group input-group addCharacterMoney">Money</label>
+              <label for=" addCharacterMoney">Money</label>
               <div class="input-group input-group-lg">
                 <span class="input-group-addon">$</span>
                 <input type="number" id="addCharacterMoney" class = "form-control" placeholder = "Enter amount of money">
-              </div>
-              <div class="form-group input-group input-group-lg" >
-                <label for="addCharacterId"> </label>
-                <input type="text" class="form-control" id="addCharacterId" placeholder="Enter Class Type">
               </div>
             </form>
           </div>
