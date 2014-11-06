@@ -40,14 +40,13 @@ var spawnRandomCharacter = function(){
 	$.getJSON(
     "http://lmu-diabolical.appspot.com/characters/spawn",
     function (character) {
-    	var charId = getCharacterId(character.name)
 
    		$('#addCharacterName').val(character.name);
 		$('#addCharacterClass').val(character.classType);
 		$('#addCharacterGender').val(character.gender);
 		$('#addCharacterLevel').val(character.level);
 		$('#addCharacterMoney').val(character.money);
-		$('#addCharacterId').val(charId);
+
     	
 		addCharacter();
 
@@ -325,7 +324,6 @@ var addCharacter = function(){
 		money : parseInt($('#addCharacterMoney').val()),
 		id:parseInt($('#addCharacterId').val())
 		}
-		alert(character.id);
 
 	$.ajax({
 	    type: 'POST',
@@ -454,23 +452,6 @@ var createRandomItem = function(){
     })
         $('.feedback').addClass('animated fadeOut')
     }
-	);
-}
-
-var getCharacterId = function(characterName){
-	console.log(characterName);
-	$.getJSON(
-    "http://lmu-diabolical.appspot.com/characters",
-    function (characters) {
-	    console.log(characters.length);
-	    for(var i = 0; i < characters.length; i++){
-	    if (characterName === characters[i].name) {
-		alert('found character');
-		alert(characters[i].id);
-	    	return characters[i].id;
-	    };
-    	}
-	}
 	);
 }
 
