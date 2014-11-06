@@ -40,13 +40,15 @@ var spawnRandomCharacter = function(){
 	$.getJSON(
     "http://lmu-diabolical.appspot.com/characters/spawn",
     function (character) {
-    	$('#addCharacterName').val(character.name);
+    	var charId = getCharacterId(character.name)
+
+   		$('#addCharacterName').val(character.name);
 		$('#addCharacterClass').val(character.classType);
 		$('#addCharacterGender').val(character.gender);
 		$('#addCharacterLevel').val(character.level);
 		$('#addCharacterMoney').val(character.money);
-		$('#addCharacterId').val(getCharacterId(character.name));
-		
+		$('#addCharacterId').val(charId);
+    	
 		addCharacter();
 
 		$('#addCharacterName').val('');
@@ -55,9 +57,13 @@ var spawnRandomCharacter = function(){
 		$('#addCharacterLevel').val('');
 		$('#addCharacterMoney').val('');
 		$('#addCharacterId').val('');
+
+		setTimeout(function(){
+			displayCharacters();
+		}
+			, 4000);
     }
 	);
-
 }
 
 var showHelp = function(){
@@ -96,15 +102,18 @@ var showHelp = function(){
 	var focusElements = [
 		firstRow, firstRowEditButton, firstRowDelBtn, refreshCharListBtn, addCharBtn, spawnCharBtn, genItemBtn
 	]
+	for (var i = 0; i < focusElements.length; i++) {
+		focusElements[i].find('button').attr('disabled', true);
+	};
 
 	var elementDescriptions = [
 	"Each character is displayed in a row with its respective attributes. Click a row to view the character's character card",
 	"Click on the character's edit button to edit the attributes of the character",
 	"To remove a character from the game, click the character's delete button",
 	"To update the list of characters with all of the current characters in the game, click \"Refresh Character List \"",
-	"To create your own character for the game with your own desired attributes, click the \"add new character\" button",
-	"Spawns a character with all attributes randomly generated",
-	"Generates a new random item to be used in the game"
+	"To create your own character for the game with your own desired attributes, click the \"Add New Character\" button",
+	"To spawn a character with all attributes randomly generated, click the \"Spawn Random Character button\"",
+	"To generate a new random item to be used in the game, click \"generate random item\""
 	]
 	
 	alertText.text(elementDescriptions[index]);
@@ -146,30 +155,14 @@ var closeHelp = function(elementsToShow){
 	}, 3000)
 
 	for (var i = 0; i < elementsToShow.length; i++){
-		elementsToShow[i].fadeTo(500, 1)
+		elementsToShow[i].fadeTo(500, 1);
+		elementsToShow[i].find('button').attr('disabled', false);
 	}
 
 	$('.tblRow').fadeTo(500, 1).css('background-color', 'white');
 	$('nav').fadeTo(500, 1);
 	$('.pageTitle').removeClass('darkened');
 }
-
-var getCharacter = function(){
-	var characterName = $searchBar.val();
-	
-	var characterId = getCharacterId(characterName);
-	
-	var getCharacterURL ="http://lmu-diabolical.appspot.com/characters/" + characterId;
-
-	$.getJSON(
-	  getCharacterURL,
-		  function (character) {
-		    // Do something with the character.
-		    console.log("received response!")
-		  }
-	);
-}
-
 
 var displayCharacters = function(){
 	$('.feedback').removeClass('animated fadeOut')
@@ -330,7 +323,9 @@ var addCharacter = function(){
 		gender : $('#addCharacterGender').val(),
 		level : parseInt($('#addCharacterLevel').val()),
 		money : parseInt($('#addCharacterMoney').val()),
+		id:parseInt($('#addCharacterId').val())
 		}
+		alert(character.id);
 
 	$.ajax({
 	    type: 'POST',
@@ -463,16 +458,19 @@ var createRandomItem = function(){
 }
 
 var getCharacterId = function(characterName){
+	console.log(characterName);
 	$.getJSON(
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
-      // Do something with the character list.
-      for(var i = 0; i < characters.length; i++){
-      	if (characters[i].name == characterName) {
-      		return characters[i].id;
-      	};
-      }
-    }
+	    console.log(characters.length);
+	    for(var i = 0; i < characters.length; i++){
+	    if (characterName === characters[i].name) {
+		alert('found character');
+		alert(characters[i].id);
+	    	return characters[i].id;
+	    };
+    	}
+	}
 	);
 }
 
@@ -606,7 +604,6 @@ $(document).ready(checkIfUserLoggedIn());
 $searchButton.mouseenter(openSearchBar);
 $(window).resize(setContentHeight);
 $searchDiv.mouseleave(closeSearchBar);
-$charSearchBtn.click(getCharacter);
 $('#submitLogInBtn').click(getUserName);
 $('#submitLogInBtn').click(hideLoginModal);
 $createNewCharacterBtn.click(checkAddInputs);

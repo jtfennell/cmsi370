@@ -61,4 +61,41 @@ tr :hover{
 .title-row{
 	height: 87px;
 }
-
+.feedback{
+	height: 20px;
+	color: white;
+}
+.char-pic{
+	height: 40px;
+	width: 40px;
+}
+.charItem{
+	margin-right: 5px;
+}
+.charPic{
+	height: 250px;
+	width: 250px;
+	margin-left: 150px;
+}
+.show{
+	opacity: 1;
+	color: white;
+}
+.darkened{
+	color: #8E8E8E
+}
+.darker{
+	color: 
+}
+.glow{
+	border: 1px solid white;
+	border-radius: 7px;
+	box-shadow: 10px 0 30px 1px #49628a;
+}
+.errors {
+	margin-top: 10px;
+	color: red;
+}
+.errors p{
+	margin-bottom: 0px;
+}
