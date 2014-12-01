@@ -30,10 +30,10 @@
           </button>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class = "nav navbar-nav navbar-left">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> <!-- JD: 7 -->
+          <ul class = "nav navbar-nav navbar-left"> <!-- JD: 8 ...stick with attr="value" -->
             <li>
-              <button type="button" id = "searchButton" class="btn btn-default navbar-btn btn-blend"><span  class = "glyphicon glyphicon-search"></span>
+              <button type="button" id = "searchButton" class="btn btn-default navbar-btn btn-blend"><span  class = "glyphicon glyphicon-search"></span> <!-- JD: 8 -->
               </button>
               <form class="navbar-form navbar-left" role="search" id = "searchDiv" hidden = "true" >
               <div class="form-group">
@@ -68,7 +68,7 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
-      <div class = "row" id = 'alertRow'>
+      <div class = "row" id = 'alertRow'> <!-- JD: 8 -->
         <div class="col-md-3 title-row" >
           <h1 class ="animated bounceInLeft pageTitle">DA RPG</h1>
         </div>
@@ -103,7 +103,7 @@
               <tbody id = "tbl-body">
                   <tr class = "tblRowTemplate" hidden>
                       <td>
-                        <img class = 'img img-circle char-pic'>
+                        <img class = 'img img-circle char-pic'> <!-- JD: 8 -->
                       </td>
                       <td class = "char-name viewCharArea"></td>
                       <td class = "char-gender viewCharArea"></td>
@@ -148,7 +148,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" id = "closeModal" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Log In</h4>
+              <h4 class="modal-title" id="myModalLabel">Log In</h4> <!-- JD: 7 -->
               <p>
                 <strong>Note:</strong>
                 User authentication not implemented. Enter your username, and password anyways so we can remember your user name for next time
@@ -178,7 +178,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Create Account</h4>
+              <h4 class="modal-title" id="myModalLabel">Create Account</h4> <!-- JD: 7, 11 -->
               <p>
                 <strong>Note:</strong>
                 User authentication not implemented. Enter your email, and password anyways
@@ -204,7 +204,7 @@
           </div>
         </div>
       </div>
-      </div>
+      </div> <!-- JD: 9 -->
         <div class="modal fade" id = "edit-modal">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -219,7 +219,7 @@
                     <input type="text" class="form-control" id="edit-name" placeholder="Enter name">
                   </div>
                   <div class="form-group">
-                    <label for="edit-gender">Password</label>
+                    <label for="edit-gender">Password</label> <!-- JD: 3 -->
                     <select name="select" class="form-control" id="edit-gender" placeholder="select one">
                       <option value="MALE" selected>Male</option>
                       <option value="FEMALE">Female</option>
@@ -246,14 +246,15 @@
             </div>
           </div>
         </div>
+      <!-- JD: 10 -->
       <div class="modal fade" id="addCharacterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title" id="myModalLabel">Add New Character</h4>
+              <h4 class="modal-title" id="myModalLabel">Add New Character</h4> <!-- JD: 7, 11 -->
               <p>Enter the desired attributes for the character you would like to add to the game</p>
-              <div class = "addErrors errors" hidden>
+              <div class = "addErrors errors" hidden> <!-- JD: 8 -->
                 <p>Please correct the following errors:</p>
                 <p class = "nameError" hidden>-Character Name: Name cannot be empty</p>
                 <p class = "classError" hidden>-Character Class: Class cannot be empty</p>
@@ -300,7 +301,7 @@
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Generate Random Item</h4>
+          <h4 class="modal-title" id="myModalLabel">Generate Random Item</h4> <!-- JD: 7, 11 -->
           <p>Select a body part and unlock level and a new item will be generated.</p>
           <div class = "itemLevelError errors" hidden>
             <p>Please correct the following errors:</p>
@@ -312,7 +313,7 @@
             <div class="form-group">
               <label for="itemBodyPart">Unlock Level</label>
               <select id = "itemBodyPart" >
-                <option val = 'head'>Head</option>
+                <option val = 'head'>Head</option> <!-- JD: 8 -->
                 <option val = 'body'>Body</option>
               </select>
             </div>
@@ -330,7 +331,7 @@
     </div>
   </div>
   <div class="modal fade" id = "viewCharModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog"> <!-- JD: 12 -->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -360,7 +361,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> <!-- JD: 12 ...domino effect from earlier indentation mistake -->
 <div id = "viewItemModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -370,7 +371,7 @@
       </div>
       <div class="modal-body">
         <p >
-          <strong >Slot:</strong>
+          <strong >Slot:</strong> <!-- JD: 8 -->
           <span id = "slot"></span>
         </p>
         <p>

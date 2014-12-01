@@ -1,15 +1,15 @@
 h1 {
-	font-size: 55px;
-	color:white;
-}
-.navbar-brand{
+	font-size: 55px; /* JD: 14 */
+	color:white; /* JD: 8 */
+} /* JD: 13 */
+.navbar-brand{ /* JD: 8 */
 	font-family: 'Arvo', serif;
 }
-.btn-blend{
+.btn-blend{ /* JD: 8 */
 	background-color: #F8F8F8;
 	border-color: #F8F8F8;
 	color:#777;
-}
+} /* JD: 8, 13, 14 ...all the way to the end of this file :) */
 .btn-large{
 	width: 200px;
 	color:black;

@@ -1,4 +1,4 @@
-$(function(){
+$(function(){ // JD: 15
 /**
 to work on:
 	-validation for inputs
@@ -7,22 +7,23 @@ var $searchButton = $('#searchButton');
 var $searchDiv = $('#searchDiv');
 var $searchBar = $('#searchBar');
 var $charSearchBtn = $('#charSearchBtn');
-var $logInBtn = $("#logInBtn");
+var $logInBtn = $("#logInBtn"); // JD: 8
 var $createNewCharacterBtn = $('#createNewCharacterBtn');
 
 var openSearchBar = function(){
-	$searchDiv.show();
+	$searchDiv.show(); // JD: 14
 	$searchDiv.addClass('animate bounceIn')
 	$searchButton.hide();
 	$searchBar.focus();
 }
 var checkIfUserLoggedIn = function(){
-	if(localStorage.getItem("userName") !== null){
+	if(localStorage.getItem("userName") !== null){ // JD: 15
 		fillInUserName();
 	};
 }
 
 var setContentHeight = function(){
+    // JD: 12
 var optimalWindowHeight = window.innerHeight *.58;
 
 $('.contentArea').height(optimalWindowHeight + "px");
@@ -30,17 +31,18 @@ $('.contentArea').height(optimalWindowHeight + "px");
 
 var closeSearchBar = function(){
 	//searchbar will disappear if the user has not typed in anything
-	if ($searchBar.val().trim() === ''){
+	if ($searchBar.val().trim() === ''){ // JD: 15, 17
 		$searchBar.val('');
 		$searchDiv.hide();
 		$searchButton.show();
 	}
-}
+} // JD: 13
 var spawnRandomCharacter = function(){
 	$.getJSON(
+        // JD: 12
     "http://lmu-diabolical.appspot.com/characters/spawn",
     function (character) {
-
+        // JD: 18
    		$('#addCharacterName').val(character.name);
 		$('#addCharacterClass').val(character.classType);
 		$('#addCharacterGender').val(character.gender);
@@ -50,6 +52,7 @@ var spawnRandomCharacter = function(){
     	
 		addCharacter();
 
+        // JD: 19
 		$('#addCharacterName').val('');
 		$('#addCharacterClass').val('');
 		$('#addCharacterGender').val('');
@@ -65,7 +68,7 @@ var spawnRandomCharacter = function(){
 	);
 }
 
-var showHelp = function(){
+var showHelp = function(){ // JD: 15
 	var refreshCharListBtn = $('#refreshCharListBtn');
 	var addCharBtn = $('#addCharBtn');
 	var spawnCharBtn = $('#spawnCharBtn');
@@ -85,10 +88,10 @@ var showHelp = function(){
 	alertBar.find('button').remove();
 	var alertText = $('<p></p>')
 	var nextButton = $('<button></button>').text('Next').addClass('btn btn-info');
-	alertBar.append(alertText);
+	alertBar.append(alertText); // JD: 20
 	alertBar.append(nextButton);
 	$('#alertRow').append(alertBar);
-	alertBar.css('margin-bottom', '0px');
+	alertBar.css('margin-bottom', '0px'); // JD: 21
 	alertBar.css('padding-bottom', '11px');
 	alertBar.addClass('animated rotateIn');
 	alertBar.show();
@@ -101,11 +104,12 @@ var showHelp = function(){
 	var focusElements = [
 		firstRow, firstRowEditButton, firstRowDelBtn, refreshCharListBtn, addCharBtn, spawnCharBtn, genItemBtn
 	]
-	for (var i = 0; i < focusElements.length; i++) {
+	for (var i = 0; i < focusElements.length; i++) { // JD: 22
 		focusElements[i].find('button').attr('disabled', true);
 	};
 
 	var elementDescriptions = [
+        // JD: 12
 	"Each character is displayed in a row with its respective attributes. Click a row to view the character's character card",
 	"Click on the character's edit button to edit the attributes of the character",
 	"To remove a character from the game, click the character's delete button",
@@ -117,7 +121,7 @@ var showHelp = function(){
 	
 	alertText.text(elementDescriptions[index]);
 	nextButton.click(function(){
-		index++;
+		index++; // JD: 23
 		if (index > 0 && index !== 1) {
 			focusElements[index - 1].fadeTo(500,.2);
 		}
@@ -138,7 +142,7 @@ var showHelp = function(){
 			alertBar.append(closeButton);
 
 			closeButton.click(
-				function(){
+				function(){ // JD: 15
 					closeHelp(focusElements)
 				}
 			)
@@ -153,7 +157,7 @@ var closeHelp = function(elementsToShow){
 		$('.help').remove()
 	}, 3000)
 
-	for (var i = 0; i < elementsToShow.length; i++){
+	for (var i = 0; i < elementsToShow.length; i++){ // JD: 22
 		elementsToShow[i].fadeTo(500, 1);
 		elementsToShow[i].find('button').attr('disabled', false);
 	}
@@ -164,11 +168,12 @@ var closeHelp = function(elementsToShow){
 }
 
 var displayCharacters = function(){
-	$('.feedback').removeClass('animated fadeOut')
+	$('.feedback').removeClass('animated fadeOut') // JD: 20
 	$('.feedback').text('Loading Characters...');
 	$('tbody').find('.tblRow').remove();
 
 	$.getJSON(
+        // JD: 12
     "http://lmu-diabolical.appspot.com/characters",
     function (characters) {
     	
@@ -176,6 +181,7 @@ var displayCharacters = function(){
 	      	var tr = $('.tblRowTemplate').clone();
 	      	tr.removeClass('tblRowTemplate');
 	      	tr.addClass('tblRow');
+            // JD: 18
 			tr.find('.char-name').text(character.name);
 			tr.find('.char-gender').text(character.gender);
 			tr.find('.char-class').text(character.classType);
@@ -186,7 +192,7 @@ var displayCharacters = function(){
 			tr.find('.delete-btn').click(deleteCharacter);
 			tr.find('.viewCharArea').click(function(){viewCharacter(character)})
 
-			if (character.gender === 'MALE') {
+			if (character.gender === 'MALE') { // JD: 24
 				tr.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
 			}else{
 				tr.find('img').attr('src','http://fantasy-faction.com/wp-content/uploads/2014/04/Avatar.jpg');
@@ -195,15 +201,16 @@ var displayCharacters = function(){
 			$('.feedback').text('All characters loaded');
 			setTimeout(function(){$('.feedback').addClass('animated fadeOut')}, 3000);
 			return tr;
-	      	}));
+	      	})); // JD: 12
 	    }
 	);
 	
 }
 
-var editCharacter = function(character, parentDiv){
+var editCharacter = function(character, parentDiv){ // JD: 15
 	characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
-	
+
+    // JD: 18
 	character.name = $('#edit-name').val();
 	character.gender = $('#edit-gender').val();
 	character.classType = $('#edit-class').val();
@@ -211,6 +218,7 @@ var editCharacter = function(character, parentDiv){
 	character.money = parseInt($('#edit-money').val());
 
 	$.ajax({
+        // JD: 12
     type: 'PUT',
     url: characterURL,
     data: JSON.stringify({
@@ -227,6 +235,7 @@ var editCharacter = function(character, parentDiv){
     success: function (data, textStatus, jqXHR) {
         parentDiv.remove();
         createSuccessDiv(character);
+        // JD: 12
 	        alertUser(
 	        	{action: "Character Modified: " + character.name,
 	        	alertType: 'warning',
@@ -239,11 +248,12 @@ var editCharacter = function(character, parentDiv){
 	});
 }
 
-var loadEditModal = function(){
-	var parentDiv =$(this).parent().parent();
+var loadEditModal = function(){ // JD: 15
+	var parentDiv =$(this).parent().parent(); // JD: 8
 	var character = parentDiv.data('character');
 	var characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
 
+    // JD: 18
 	$('#edit-name').val(character.name);
 	$('#edit-gender').val(character.gender);
 	$('#edit-class').val(character.classType);
@@ -261,11 +271,13 @@ var loadEditModal = function(){
 }
 
 var deleteCharacter = function(){
-	$('.feedback').removeClass('animated fadeOut');
+	$('.feedback').removeClass('animated fadeOut'); // JD: 20
 	$('.feedback').text('Deleting Character...');
 	var characterRow = $(this).parent().parent();
 	var character = $(this).parent().parent().data('character');
 	var characterURL = "http://lmu-diabolical.appspot.com/characters/" + character.id;
+
+    // JD: 12
 		$.ajax({
 	    type: 'DELETE',
 	    url: characterURL,
@@ -283,8 +295,12 @@ var deleteCharacter = function(){
 		
 		
 }
+
+// JD: 25
 var createSuccessDiv = function(character){
 	var newRow = $('.tblRowTemplate').clone();
+
+    // JD: 18
     newRow.find('.char-name').text(character.name);
     newRow.find('.char-gender').text(character.gender);
     newRow.find('.char-class').text(character.classType);
@@ -295,6 +311,7 @@ var createSuccessDiv = function(character){
     newRow.show();
     newRow.data('character', character);
 
+    // JD: 24
     if (character.gender === 'MALE') {
 		newRow.find('img').attr('src','http://goodfilmguide.co.uk/wp-content/uploads/2010/04/avatar12.jpg' )
 	}else{
@@ -305,7 +322,8 @@ var createSuccessDiv = function(character){
     $(".contentArea").animate({ scrollTop: 0 }, 500);
     $('tbody').prepend(newRow);
     newRow.removeClass('tblRowTemplate').addClass('tblRow');
-    setTimeout(function(){
+    setTimeout(function(){ // JD: 15
+        // JD: 12
     newRow.removeClass('success');
    	}, 5000)
 
@@ -316,6 +334,7 @@ var addCharacter = function(){
 	$('.feedback').removeClass('animated fadeOut');
 	$('.feedback').text('Adding Character...');
 
+    // JD: 12
 		var character = {
 		name: $('#addCharacterName').val(),
 		classType : $('#addCharacterClass').val(),
@@ -353,7 +372,7 @@ var addCharacter = function(){
 	});
 	
 }
-var viewCharacter = function(character){
+var viewCharacter = function(character){ // JD: 25
 	$('#viewCharModal').modal('toggle');
 	$('.charName').text(character.name);
 	$('.charGender').text(character.gender);
@@ -385,10 +404,10 @@ var checkGenItemInputs = function(){
 }
 
 var viewNotification = function(notification){
-	if (notification.character === null) {
+	if (notification.character === null) { // JD: 17
 		item = notification.item;
 		console.log(notification.item)
-		$(".itemName").text(item.name);
+		$(".itemName").text(item.name); // JD: 18
 		$("#slot").text(item.slot);
 		$('#level').text(item.level);
 		$('#absorption').text(item.absorption);
@@ -438,6 +457,7 @@ var createRandomItem = function(){
 	$('#itemCloseBtn').click();
 
 	$.getJSON(
+        // JD: 12
     "http://lmu-diabolical.appspot.com/items/spawn",
     {
         level: item.unlockLevel,
@@ -464,11 +484,13 @@ var checkIfUserLoggedIn = function(){
 }
 
 var fillInUserName = function(userName){
+    // JD: 20
 	var $logoutButton = $('<button></button>');
 	$logoutButton.text('Log out');
 	$logoutButton.addClass('btn navbar-btn btn-link')
 	$logoutButton.click(clearLocalStorage);
 
+    // JD: 20
 	$("#userInfoLogin").empty().text("Welcome back, " + userName);
 	$('#userInfoLogin').append($logoutButton);
 	$('#userInfoLogin').addClass('user-greeting');
@@ -477,11 +499,14 @@ var fillInUserName = function(userName){
 var getUserName = function(){
 	var $userNameInput = $('#userNameInput');
 	var userName = $userNameInput.val();
-	
+
+    // JD: 17
 	if (userName === "") {
 		$userNameInput.parent().addClass("has-error")
 		return;
 	};
+
+    // JD: 17
 	if (userName !== "") {
 		localStorage.setItem("userName", userName);
 		fillInUserName(userName);
@@ -493,13 +518,13 @@ var clearLocalStorage = function(){
 }
 
 var hideLoginModal = function(){
-	if ($('#userNameInput').val() !== "") {
+	if ($('#userNameInput').val() !== "") { // JD: 17
 		$('#closeModal').click();
 	};
 }
 
-var undoDelete = function(character){
-	
+var undoDelete = function(character){ // JD: 25
+	// JD: 18
 	$('#addCharacterName').val(character.name),
 	$('#addCharacterClass').val(character.classType)
 	$('#addCharacterGender').val(character.gender)
@@ -507,6 +532,7 @@ var undoDelete = function(character){
 	$('#addCharacterMoney').val(character.money)
 	addCharacter();
 
+    // JD: 19
 	$('#addCharacterName').val('');
 	$('#addCharacterClass').val('');
 	$('#addCharacterGender').val('');
@@ -527,15 +553,16 @@ var checkAddInputs = function(){
 	var level = parseInt($('#addCharacterLevel').val())
 	var money = parseInt($('#addCharacterMoney').val())
 
-	if (name === '') {
+	if (name === '') { // JD: 17
 		errorsInInputs = true;
 		$('#addCharacterName').parent().addClass('has-error');
 		$('.nameError').show();
 	}
-	else{
+	else{ // JD: 26
 		$('.nameError').hide();
 	}
 
+    // JD: 25
 	if (classType === '') {
 		errorsInInputs = true;
 		$('#addCharacterClass').parent().addClass('has-error');
@@ -545,6 +572,7 @@ var checkAddInputs = function(){
 		$('.classError').hide();
 	}
 
+    // JD: 25
 	if (!(isNumeric(level))) {
 		errorsInInputs = true;
 		$('#addCharacterLevel').parent().addClass('has-error');
@@ -554,6 +582,7 @@ var checkAddInputs = function(){
 		$('.levelError').hide();
 	}
 
+    // JD: 25
 	if (!(isNumeric(money))) {
 		errorsInInputs = true;
 		$('#addCharacterMoney').parent().addClass('has-error');
@@ -566,11 +595,12 @@ var checkAddInputs = function(){
 	if (errorsInInputs) {
 		$('.addErrors').show();
 	}
-	else if (!errorsInInputs) {
+	else if (!errorsInInputs) { // JD: 26
 		//removes any feedback about user errors on the add character modal
 		$('.addErrors').children().remove().hide();
 		addCharacter();
 		//clears the input warnings from the add character modal
+        // JD: 18
 		$('#addCharacterMoney').val('').parent().removeClass('has-error');
 		$('#addCharacterLevel').val('').parent().removeClass('has-error');
 		$('#addCharacterClass').val('').parent().removeClass('has-error');
