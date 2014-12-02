@@ -60,6 +60,13 @@ var BoxesTouch = {
     },
 
     /**
+     * Provides feedback indicating that a box is about to be deleted
+    */
+    warnDelete: function () {
+        $(this).addClass("warning");
+    },
+
+    /**
      * Begins a box move sequence.
      */
     startMove: function (event) {
