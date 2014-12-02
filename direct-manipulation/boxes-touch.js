@@ -1,4 +1,19 @@
 var BoxesTouch = {
+
+    drawingAreaBoundaries: {
+        left: $('#drawing-area').offset().left,
+        right: $('#drawing-area').offset().left + $('#drawing-area').width,
+        top: $('#drawing-area').offset().top;
+        bottom: $('#drawing-area').top + $('#drawing-area').height
+    },
+
+    /**
+     * Determines if a box has left the drawing area
+    */
+    boxWithinDrawingArea: function () {
+
+    },
+
     /**
      * Sets up the given jQuery collection as the drawing area(s).
      */
@@ -32,6 +47,12 @@ var BoxesTouch = {
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
+
+                //displays delete warning feedback if box is dragged outside of drawing area
+                var boxOutOfBounds = (touch.pageX > $('#drawing-area').height || touch.pageX <
+                if (!boxWithinDrawingArea) {
+                    BoxesTouch.warnDelete;
+                };
             }
         });
         
@@ -60,7 +81,7 @@ var BoxesTouch = {
     },
 
     /**
-     * Provides feedback indicating that a box is about to be deleted
+     * Provides user feedback indicating that a box is about to be deleted
     */
     warnDelete: function () {
         $(this).addClass("warning");
