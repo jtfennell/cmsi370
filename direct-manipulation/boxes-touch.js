@@ -35,7 +35,7 @@ var BoxesTouch = {
                     top: touch.pageY - touch.target.deltaY
                 });
                 
-                //tracks the current position to see if it is contained within the box
+                //tracks the current box position to see if it is within the drawing area
                 withinHorizontalBounds = touch.pageX < $('#drawing-area').width();
                 withinVerticalBounds = touch.pageY < $('#drawing-area').height();
                 
