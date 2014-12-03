@@ -1,19 +1,5 @@
 var BoxesTouch = {
 
-    drawingAreaBoundaries: {
-        left: $('#drawing-area').offset().left,
-        right: $('#drawing-area').offset().left + $('#drawing-area').width,
-        top: $('#drawing-area').offset().top;
-        bottom: $('#drawing-area').top + $('#drawing-area').height
-    },
-
-    /**
-     * Determines if a box has left the drawing area
-    */
-    boxWithinDrawingArea: function () {
-
-    },
-
     /**
      * Sets up the given jQuery collection as the drawing area(s).
      */
@@ -47,12 +33,18 @@ var BoxesTouch = {
                     left: touch.pageX - touch.target.deltaX,
                     top: touch.pageY - touch.target.deltaY
                 });
-
+                
+                //tracks the current position to see if it is contained within the box
+                withinHorizontalBounds = touch.pageX < $('#drawing-area').width();
+                withinVerticalBounds = touch.pageY < $('#drawing-area').height();
+                
                 //displays delete warning feedback if box is dragged outside of drawing area
-                var boxOutOfBounds = (touch.pageX > $('#drawing-area').height || touch.pageX <
-                if (!boxWithinDrawingArea) {
-                    BoxesTouch.warnDelete;
-                };
+                if (!withinVerticalBounds && withinHorizontalBounds) {
+                    BoxesTouch.warnDelete($(touch.target));
+                } else if (withinHorizontalBounds && withinVerticalBounds) {
+                    // Highlight the element.
+                    $(touch.target).removeClass("warning");
+                }
             }
         });
         
@@ -83,8 +75,8 @@ var BoxesTouch = {
     /**
      * Provides user feedback indicating that a box is about to be deleted
     */
-    warnDelete: function () {
-        $(this).addClass("warning");
+    warnDelete: function (box) {
+        box.addClass("warning");
     },
 
     /**
