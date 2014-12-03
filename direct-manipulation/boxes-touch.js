@@ -18,6 +18,7 @@ var BoxesTouch = {
             .find("div.box").each(function (index, element) {
                 element.addEventListener("touchstart", BoxesTouch.startMove, false);
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
+                element.addEventListener("touchend", BoxesTouch.checkDelete, false);
             });
     },
 
@@ -40,16 +41,28 @@ var BoxesTouch = {
                 
                 //displays delete warning feedback if box is dragged outside of drawing area
                 if (!withinVerticalBounds && withinHorizontalBounds) {
-                    BoxesTouch.warnDelete($(touch.target));
+                     $(touch.target).addClass("warning").text('release to delete');
+
                 } else if (withinHorizontalBounds && withinVerticalBounds) {
                     // Highlight the element.
-                    $(touch.target).removeClass("warning");
+                    $(touch.target).removeClass("warning").text('');
                 }
             }
         });
         
         // Don't do any touch scrolling.
         event.preventDefault();
+    },
+
+    /**
+     * Determines if a box should be deleted.
+     */
+     checkDelete: function (event) {
+        $.each(event.changedTouches, function (index, touch) {
+            if (!(touch.pageX < $('#drawing-area').width() && touch.pageY < $('#drawing-area').height() )) {
+               $(touch.target).remove();
+            }
+        });
     },
 
     /**
@@ -70,13 +83,6 @@ var BoxesTouch = {
      */
     unhighlight: function () {
         $(this).removeClass("box-highlight");
-    },
-
-    /**
-     * Provides user feedback indicating that a box is about to be deleted
-    */
-    warnDelete: function (box) {
-        box.addClass("warning");
     },
 
     /**
