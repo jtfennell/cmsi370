@@ -20,6 +20,18 @@ var BoxesTouch = {
                 element.addEventListener("touchend", BoxesTouch.unhighlight, false);
                 element.addEventListener("touchend", BoxesTouch.checkDelete, false);
             });
+
+        var drawingArea = document.getElementById("drawing-area");
+        drawingArea.addEventListener("touchstart", BoxesTouch.startDraw, false);
+    },
+
+    /**
+     * Begins drawing a new box
+    */
+    startDraw: function (event) {
+        alert("touched down on drawing area");
+         alert(event.pageX);
+         alert(event.pageY);
     },
 
     /**
@@ -40,7 +52,7 @@ var BoxesTouch = {
                 withinVerticalBounds = touch.pageY < $('#drawing-area').height();
                 
                 //displays delete warning feedback if box is dragged outside of drawing area
-                if (!withinVerticalBounds && withinHorizontalBounds) {
+                if (!(withinVerticalBounds && withinHorizontalBounds)) {
                      $(touch.target).addClass("warning").text('release to delete');
 
                 } else if (withinHorizontalBounds && withinVerticalBounds) {
