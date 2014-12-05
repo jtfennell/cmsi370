@@ -1,4 +1,13 @@
-.slider {
+.slider-container {
 	background-color: #D2D2D1;
 	height: 40px;
+	z-index: 1;
+}
+
+.slider-track {
+	background-color: #999999;
+	height: 15px;
+	border-radius: 5px;
+	border: 1px solid black;
+	z-index: 10;
 }
