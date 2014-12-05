@@ -11,12 +11,12 @@
         }, options)
         
         var checkForArrowKey = function (event) {
-            if (event.which === LEFT_ARROW_KEY) {
+            if (event.keyCode === LEFT_ARROW_KEY) {
                 //decrease input, adjust position of slider knob
-                alert("left arrow key pressed");
-            }else if (event.which === RIGHT_ARROW_KEY) {
+                
+            }else if (event.keyCode === RIGHT_ARROW_KEY) {
                 //increment input, adjust position of slider knob
-                alert("right arrow key pressed");
+                
             }
         }
 
@@ -24,8 +24,9 @@
         $receivingInput.attr('type', 'number');
 
         //handler to receive right and left arrow button presses to adjust slider
-        $receivingInput.on('keypress', checkForArrowKey);
+        $receivingInput.on('keydown',checkForArrowKey);
 
+        $sliderContainer =
         //append the slider beneath the input
         $receivingInput.parent().append($('<div></div>').addClass('slider'));
         
