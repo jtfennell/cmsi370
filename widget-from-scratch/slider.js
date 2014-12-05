@@ -3,11 +3,14 @@
         var $receivingInput = this;
         var LEFT_ARROW_KEY = 37;
         var RIGHT_ARROW_KEY = 39;
+        var DEFAULT_MIN = 0;
+        var DEFAULT_MAX = 100;
+        var DEFAULT_KNOB_COLOR = '#70DB70';
 
         var settings = $.extend({
-            min:0,
-            max: 100,
-            color: '#70DB70'
+            min:DEFAULT_MIN,
+            max: DEFAULT_MAX,
+            color: DEFAULT_KNOB_COLOR
         }, options)
         
         var checkForArrowKey = function (event) {
