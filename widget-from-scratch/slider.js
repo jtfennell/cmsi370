@@ -29,9 +29,12 @@
         //handler to receive right and left arrow button presses to adjust slider
         $receivingInput.on('keydown',checkForArrowKey);
 
-        $sliderContainer =
+        $sliderContainer = $('<div></div>').addClass('slider-container');
+        $sliderTrack = $('<div></div>').addClass('slider-track');
+        $sliderContainer.append($sliderTrack);
+
         //append the slider beneath the input
-        $receivingInput.parent().append($('<div></div>').addClass('slider'));
+        $receivingInput.parent().append($sliderContainer);
         
         this.text('Slider');
         return this;
