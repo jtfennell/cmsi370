@@ -13,16 +13,36 @@
   </head>
   <body>
     <div class = "container">
-      <div class = "row">
-        <h1>Custom jQuery Slider</h1>
-      </div>
-      <div class = "row">
-        <p>
-        This custom jQuery widget allows the user to change the value of an input box via a slider.
-        </p>
+      <div class = "page-header">
+        <h1>Custom jQuery Slider <small>By Jeff Fennell</small></h1>
       </div>
       <div class = "row">
         <div class = "col col-md-8 col-md-offset-2">
+          <p>
+          This custom jQuery widget allows the user to change the value of an input box via a slider.
+          </p>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col col-md-8 col-md-offset-2">
+          <input id = "input1">
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col col-md-8 col-md-offset-2">
+          <div class = "well sample-code">
+            $(<span class = "red">'#money-input'</span>).slider({
+              min:0,
+              max:1000
+            });
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col col-md-8 col-md-offset-2">
+          <p>
+            The developer can also pass in an additional option to change the outline color of the slider knob.
+          </p>
           <div class = "well sample-code">
             $(<span class = "red">'#money-input'</span>).slider();
           </div>
@@ -34,5 +54,6 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src = "slider.js"></script>
+    <script src = "widget-from-scratch.js"></script>
   </body>
 </html>
