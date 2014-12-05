@@ -29,13 +29,17 @@
         //handler to receive right and left arrow button presses to adjust slider
         $receivingInput.on('keydown',checkForArrowKey);
 
+        //create components for slider
         $sliderContainer = $('<div></div>').addClass('slider-container');
         $sliderTrack = $('<div></div>').addClass('slider-track');
-        $sliderContainer.append($sliderTrack);
+        $sliderKnob = $('<div></div>').addClass('slider-knob');
+        $sliderContainer.append($sliderTrack.append($sliderKnob));
 
         //append the slider beneath the input
         $receivingInput.parent().append($sliderContainer);
         
+
+        $sliderKnob.on('mousedown', trackDrag);
         this.text('Slider');
         return this;
     }
