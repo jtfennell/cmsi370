@@ -7,7 +7,6 @@
         var DEFAULT_MIN = 0;
         var DEFAULT_MAX = 100;
         var DEFAULT_KNOB_COLOR = 'black';
-        var sliderInitialPosition;
 
         var settings = $.extend({
             min:DEFAULT_MIN,
@@ -30,14 +29,35 @@
         var startDrag = function(event) {
             if (event.which === LEFT_MOUSE_BUTTON) {
                
-                //record initial position of slider
+                //record initial position of slider before this move
                 sliderInfo.initialPosition = ($(this).offset().left);
-                sliderInfo.active = true;
+                
+                sliderInfo.moving = true;
+                
+                //calculate adjustment for offset based on the click's position 
+                //relative to the left edge of the slider
+                sliderInfo.offset = event.pageX - sliderInfo.initialPosition;
+
+                //slider stops when the right edge hits the right hand side of the track
+                sliderInfo.length = $sliderTrack.width() - $sliderKnob.width();
+                console.log("slider track" + $sliderTrack.width());
+                console.log("slider width" + $sliderKnob.width());
+                console.log(sliderInfo.length);
+            }; 
+        }
+
+        var updateInput = function (event) {
+            if (sliderInfo.moving) {
+                var percentageOfSliderPassed = (event.pageX - sliderInfo.startingPosition) / sliderInfo.length;
+                console.log("percentageOfSliderPassed" + percentageOfSliderPassed);
+                
+                var updatedVal = Math.floor(settings.min + (percentageOfSliderPassed / 100) * (settings.max - settings.min));
+                $receivingInput.val(updatedVal);
             }; 
         }
 
         var endDrag = function () {
-            sliderInfo.active = false;
+            sliderInfo.moving = false;
         }
 
         var pointerGrab = function (event) {
@@ -47,12 +67,12 @@
             
         }
 
-        var trackDrag = function () {
-            if (sliderInfo.active) {
-                console.log($(this));
+        var trackDrag = function (event) {
+            if (sliderInfo.moving) {
+            
                 $(this).offset({
                     top: $(this).offset().top,
-                    left: event.pageX
+                    left: event.pageX - sliderInfo.offset
                 })
             };
         }
@@ -73,6 +93,10 @@
         $sliderGlyph = $('<span></span>').addClass('glyphicon glyphicon-transfer arrow-glyph')
         $sliderKnob = $('<div></div>').addClass('slider-knob').css('border', '2px solid ' + settings.color);
         $sliderContainer.append($sliderTrack.append($sliderKnob.append($sliderGlyph)));
+        
+        //records the starting position of the slider before it is moved
+        sliderInfo.startingPosition = $sliderKnob.offset().left;
+        
 
         //append the slider beneath the input
         $receivingInput.parent().append($sliderContainer);
@@ -82,6 +106,7 @@
         $sliderKnob.on('mouseup', pointerHand);
         $sliderKnob.on('mouseup', endDrag);
         $sliderKnob.on('mousemove', trackDrag);
+        $sliderKnob.on('mousemove', updateInput);
 
         this.text('Slider');
         return this;
