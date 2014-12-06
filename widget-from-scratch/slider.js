@@ -33,13 +33,12 @@
         $sliderContainer = $('<div></div>').addClass('slider-container');
         $sliderTrack = $('<div></div>').addClass('slider-track absolute-center');
         $sliderGlyph = $('<span></span>').addClass('glyphicon glyphicon-transfer')
-        $sliderKnob = $('<div></div>').addClass('slider-knob');
+        $sliderKnob = $('<div></div>').addClass('slider-knob').css('border', '2px solid black');
         $sliderContainer.append($sliderTrack.append($sliderKnob.append($sliderGlyph)));
 
         //append the slider beneath the input
         $receivingInput.parent().append($sliderContainer);
         
-
         $sliderKnob.on('mousedown', trackDrag);
         
         var trackDrag = function() {
