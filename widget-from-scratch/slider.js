@@ -16,16 +16,6 @@
         
         var sliderInfo = {}
 
-        var checkForArrowKey = function (event) {
-            if (event.keyCode === LEFT_ARROW_KEY) {
-                //decrease input, adjust position of slider knob
-                alert('left arrow key pressed');
-            }else if (event.keyCode === RIGHT_ARROW_KEY) {
-                //increment input, adjust position of slider knob
-                alert('right arrow key pressed');
-            }
-        }
-
         var startDrag = function(event) {
             if (event.which === LEFT_MOUSE_BUTTON) {
                
@@ -42,16 +32,22 @@
                 sliderInfo.length = $sliderTrack.width() - $sliderKnob.width();
                 console.log("slider track" + $sliderTrack.width());
                 console.log("slider width" + $sliderKnob.width());
-                console.log(sliderInfo.length);
+
+                //calculate left and right boundaries of track
+                sliderInfo.leftEdgeOfTrack = sliderInfo.startingPosition;
+                sliderInfo.rightEdgeOfTrack = sliderInfo.length - $sliderKnob.width();
+                
             }; 
         }
 
         var updateInput = function (event) {
             if (sliderInfo.moving) {
                 var percentageOfSliderPassed = (event.pageX - sliderInfo.startingPosition) / sliderInfo.length;
+                console.log("slider length" + sliderInfo.length);
+                console.log("pixels slider moved " + (event.pageX - sliderInfo.startingPosition));
                 console.log("percentageOfSliderPassed" + percentageOfSliderPassed);
                 
-                var updatedVal = Math.floor(settings.min + (percentageOfSliderPassed / 100) * (settings.max - settings.min));
+                var updatedVal = Math.floor(settings.min + (percentageOfSliderPassed * (settings.max - settings.min)));
                 $receivingInput.val(updatedVal);
             }; 
         }
@@ -69,11 +65,15 @@
 
         var trackDrag = function (event) {
             if (sliderInfo.moving) {
-            
-                $(this).offset({
+                var knobPosition = $(this).offset().left;
+                if (knobPosition >= sliderInfo.leftEdgeOfTrack && knobPosition <= sliderInfo.rightEdgeOfTrack) {
+                    $(this).offset({
                     top: $(this).offset().top,
                     left: event.pageX - sliderInfo.offset
                 })
+                }else{
+                    endDrag();
+                } 
             };
         }
 
@@ -84,22 +84,20 @@
         //change the type of input 
         $receivingInput.attr('type', 'number');
 
-        //handler to receive right and left arrow button presses to adjust slider
-        $receivingInput.on('keydown',checkForArrowKey);
-
         //create components for slider
         $sliderContainer = $('<div></div>').addClass('slider-container');
         $sliderTrack = $('<div></div>').addClass('slider-track absolute-center');
         $sliderGlyph = $('<span></span>').addClass('glyphicon glyphicon-transfer arrow-glyph')
         $sliderKnob = $('<div></div>').addClass('slider-knob').css('border', '2px solid ' + settings.color);
         $sliderContainer.append($sliderTrack.append($sliderKnob.append($sliderGlyph)));
-        
-        //records the starting position of the slider before it is moved
-        sliderInfo.startingPosition = $sliderKnob.offset().left;
-        
 
         //append the slider beneath the input
         $receivingInput.parent().append($sliderContainer);
+
+        //records the starting position of the slider before 
+        //it is moved for the first time
+        sliderInfo.startingPosition = $sliderKnob.offset().left;
+        console.log($sliderKnob.offset());
         
         $sliderKnob.on('mousedown', startDrag);
         $sliderKnob.on('mousedown', pointerGrab);
