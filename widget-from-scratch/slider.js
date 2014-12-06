@@ -29,13 +29,11 @@
                 sliderInfo.offset = event.pageX - sliderInfo.initialPosition;
 
                 //slider stops when the right edge hits the right hand side of the track
-                sliderInfo.length = $sliderTrack.width() - $sliderKnob.width();
-                console.log("slider track" + $sliderTrack.width());
-                console.log("slider width" + $sliderKnob.width());
+                sliderInfo.length = $sliderTrack.width() + $sliderTrack.offset().left - $sliderKnob.width();
 
                 //calculate left and right boundaries of track
                 sliderInfo.leftEdgeOfTrack = sliderInfo.startingPosition;
-                sliderInfo.rightEdgeOfTrack = sliderInfo.length - $sliderKnob.width();
+                sliderInfo.rightEdgeOfTrack = sliderInfo.length;
                 
             }; 
         }
@@ -43,10 +41,7 @@
         var updateInput = function (event) {
             if (sliderInfo.moving) {
                 var percentageOfSliderPassed = (event.pageX - sliderInfo.startingPosition) / sliderInfo.length;
-                console.log("slider length" + sliderInfo.length);
-                console.log("pixels slider moved " + (event.pageX - sliderInfo.startingPosition));
-                console.log("percentageOfSliderPassed" + percentageOfSliderPassed);
-                
+                            
                 var updatedVal = Math.floor(settings.min + (percentageOfSliderPassed * (settings.max - settings.min)));
                 $receivingInput.val(updatedVal);
             }; 
@@ -60,12 +55,13 @@
             if (event.which === LEFT_MOUSE_BUTTON) {
                 this.classList.add('grabbing');
             };
-            
         }
 
         var trackDrag = function (event) {
             if (sliderInfo.moving) {
                 var knobPosition = $(this).offset().left;
+                console.log(knobPosition);
+                console.log(sliderInfo.rightEdgeOfTrack);
                 if (knobPosition >= sliderInfo.leftEdgeOfTrack && knobPosition <= sliderInfo.rightEdgeOfTrack) {
                     $(this).offset({
                     top: $(this).offset().top,
@@ -97,7 +93,6 @@
         //records the starting position of the slider before 
         //it is moved for the first time
         sliderInfo.startingPosition = $sliderKnob.offset().left;
-        console.log($sliderKnob.offset());
         
         $sliderKnob.on('mousedown', startDrag);
         $sliderKnob.on('mousedown', pointerGrab);
