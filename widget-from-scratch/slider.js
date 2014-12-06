@@ -31,15 +31,21 @@
 
         //create components for slider
         $sliderContainer = $('<div></div>').addClass('slider-container');
-        $sliderTrack = $('<div></div>').addClass('slider-track');
+        $sliderTrack = $('<div></div>').addClass('slider-track absolute-center');
+        $sliderGlyph = $('<span></span>').addClass('glyphicon glyphicon-transfer')
         $sliderKnob = $('<div></div>').addClass('slider-knob');
-        $sliderContainer.append($sliderTrack.append($sliderKnob));
+        $sliderContainer.append($sliderTrack.append($sliderKnob.append($sliderGlyph)));
 
         //append the slider beneath the input
         $receivingInput.parent().append($sliderContainer);
         
 
         $sliderKnob.on('mousedown', trackDrag);
+        
+        var trackDrag = function() {
+
+        }
+
         this.text('Slider');
         return this;
     }
