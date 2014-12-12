@@ -34,13 +34,13 @@
                 //calculate left and right boundaries of track
                 sliderInfo.leftEdgeOfTrack = sliderInfo.startingPosition;
                 sliderInfo.rightEdgeOfTrack = sliderInfo.length;
-                
+                console.log(sliderInfo.moving);
             }; 
         }
 
         var updateInput = function (event) {
             if (sliderInfo.moving) {
-                var percentageOfSliderPassed = (event.pageX - sliderInfo.startingPosition) / sliderInfo.length;
+                var percentageOfSliderPassed = (event.pageX - sliderInfo.startingPosition) / (sliderInfo.length - sliderInfo.startingPosition);
                             
                 var updatedVal = Math.floor(settings.min + (percentageOfSliderPassed * (settings.max - settings.min)));
                 $receivingInput.val(updatedVal);
@@ -60,16 +60,14 @@
         var trackDrag = function (event) {
             if (sliderInfo.moving) {
                 var knobPosition = $(this).offset().left;
-                console.log(knobPosition);
-                console.log(sliderInfo.rightEdgeOfTrack);
+               //console.log(knobPosition);
+               // console.log(sliderInfo.rightEdgeOfTrack);
                 if (knobPosition >= sliderInfo.leftEdgeOfTrack && knobPosition <= sliderInfo.rightEdgeOfTrack) {
-                    $(this).offset({
-                    top: $(this).offset().top,
+                    $(this).find('.slider-knob').offset({
+                    top: $(this).find('.slider-knob').offset().top,
                     left: event.pageX - sliderInfo.offset
                 })
-                }else{
-                    endDrag();
-                } 
+                }
             };
         }
 
@@ -98,7 +96,7 @@
         $sliderKnob.on('mousedown', pointerGrab);
         $sliderKnob.on('mouseup', pointerHand);
         $sliderKnob.on('mouseup', endDrag);
-        $sliderKnob.on('mousemove', trackDrag);
+        $sliderContainer.on('mousemove', trackDrag);
         $sliderKnob.on('mousemove', updateInput);
 
         this.text('Slider');
