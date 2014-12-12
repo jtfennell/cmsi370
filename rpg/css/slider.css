@@ -1,0 +1,36 @@
+.slider-container {
+	background-color: #D2D2D1;
+	height: 40px;
+	z-index: 1;
+}
+
+.slider-track {
+	background-color: #999999;
+	height: 15px;
+	border-radius: 5px;
+	border: 1px solid black;
+	z-index: 10;
+	width: 100%;
+	position: relative;
+	top: 30%;
+
+}
+.slider-knob {
+	width: 20px;
+	height: 38px;
+	z-index: 20;
+	background-color: #E6E6E6;
+	border-radius: 3px;
+	position: relative;
+	top: -90%;
+	left: -1px;
+	cursor: -webkit-grab;
+}
+
+.arrow-glyph {
+	top: 8px;
+}
+
+.grabbing {
+	cursor: -webkit-grabbing;
+}
