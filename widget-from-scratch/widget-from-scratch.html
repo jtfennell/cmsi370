@@ -20,7 +20,7 @@
         <div class = "col col-md-8 col-md-offset-2">
           <h1>Default</h1>
           <p>
-          This custom jQuery widget allows the user to change the value of an input box via a slider. Be default, the slider sets the input box's min and max values, to 0 and 100 respectively.
+          This custom jQuery widget allows the user to change the value of an input box via a slider. By default, the slider sets the input box's min and max values, to 0 and 100 respectively.
           </p>
           <input id = "input1" class = "input-lg">
         </div>
@@ -35,6 +35,7 @@
       <div class = "row">
         <div class = "col col-md-8 col-md-offset-2">
           <h1>Optional attributes</h1>
+          <h3>Color</h3>
           <p>
             The developer can also pass in an additional option to change the outline color of the slider knob.
           </p>
@@ -46,6 +47,26 @@
           <div class = "well sample-code">
             $(<span class = "red">'#money-input'</span>).slider({
             color: '#00FF00'
+          });
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col col-md-8 col-md-offset-2">
+          <h3>Min and Max Values</h3>
+          <p>
+            The developer can also change the min and max values for the input box.
+          </p>
+          <input id = "input3" class = "input-lg">
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col col-md-8 col-md-offset-2">
+          <div class = "well sample-code">
+            $(<span class = "red">'#money-input'</span>).slider({
+            color: '#00FF00',
+            min:100,
+            max:200
           });
           </div>
         </div>
