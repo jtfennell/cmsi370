@@ -624,4 +624,9 @@ $('.genItemBtn').click(checkGenItemInputs);
 $("#helpButton").click(showHelp);
 $('#searchBar').tooltip()
 $('#addCharacterName').popover('show');
+$('#addCharacterLevel').slider({
+	color:'blue',
+	min: 0,
+	max: 100 
+});
 })
