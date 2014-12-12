@@ -49,6 +49,21 @@
 
         var endDrag = function () {
             sliderInfo.moving = false;
+            var knobPosition = $(this).offset().left;
+            //adjusts the position of the slider if it is all the way to the edge
+            if (knobPosition <= sliderInfo.leftEdgeOfTrack) {
+                    $(this).offset({
+                    top: $(this).offset().top,
+                    left:$(this).offset().left + 1
+                    })
+            }else if (knobPosition >= sliderInfo.leftEdgeOfTrack) {
+                    $(this).offset({
+                    top: $(this).offset().top,
+                    left:$(this).offset().left - 2
+                })
+            };
+            
+            pointerHand();
         }
 
         var pointerGrab = function (event) {
@@ -59,9 +74,9 @@
 
         var trackDrag = function (event) {
             if (sliderInfo.moving) {
-                var knobPosition = $(this).offset().left;
-               //console.log(knobPosition);
-               // console.log(sliderInfo.rightEdgeOfTrack);
+                var knobPosition = $(this).find('.slider-knob').offset().left;
+               console.log(knobPosition);
+               console.log(sliderInfo.rightEdgeOfTrack);
                 if (knobPosition >= sliderInfo.leftEdgeOfTrack && knobPosition <= sliderInfo.rightEdgeOfTrack) {
                     $(this).find('.slider-knob').offset({
                     top: $(this).find('.slider-knob').offset().top,
