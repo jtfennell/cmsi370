@@ -21,7 +21,7 @@ var BoxesTouch = {
                 element.addEventListener("touchend", BoxesTouch.checkDelete, false);
             });
 
-        var drawingArea = document.getElementById("drawing-area");
+        var drawingArea = document.getElementById("drawing-area"); // JD: 5
         drawingArea.addEventListener("touchstart", BoxesTouch.startDraw, false);
     },
 
@@ -29,8 +29,9 @@ var BoxesTouch = {
      * Begins drawing a new box
     */
     startDraw: function (event) {
+        // JD: 3
         alert("touched down on drawing area");
-         alert(event.pageX);
+         alert(event.pageX); // JD: 6
          alert(event.pageY);
     },
 
@@ -48,6 +49,7 @@ var BoxesTouch = {
                 });
                 
                 //tracks the current box position to see if it is within the drawing area
+                // JD: 7
                 withinHorizontalBounds = touch.pageX < $('#drawing-area').width();
                 withinVerticalBounds = touch.pageY < $('#drawing-area').height();
                 
@@ -71,8 +73,9 @@ var BoxesTouch = {
      */
      checkDelete: function (event) {
         $.each(event.changedTouches, function (index, touch) {
-            if (!(touch.pageX < $('#drawing-area').width() && touch.pageY < $('#drawing-area').height() )) {
-               $(touch.target).remove();
+            // JD: 8
+            if (!(touch.pageX < $('#drawing-area').width() && touch.pageY < $('#drawing-area').height() )) { // JD: 9
+               $(touch.target).remove(); // JD: 6
             }
         });
     },
